@@ -1,0 +1,9 @@
+{
+  "completed_tasks": 36,
+  "contains_credentials": false,
+  "contains_model_weights": false,
+  "publication_ready_tasks": 36,
+  "rel03_independent_rerun_passed": true,
+  "schema_version": 1,
+  "source_release_id": "job-portfolio-v1"
+}
