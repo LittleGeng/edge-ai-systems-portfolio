@@ -1,0 +1,37 @@
+{
+  "claims": {
+    "edge_4090_denoising_speedup": {
+      "absolute_tolerance": 1e-12,
+      "value": 2.403365141294791
+    },
+    "edge_high_quality_completion_rate": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.95
+    },
+    "edge_orin_deadline_misses": {
+      "absolute_tolerance": 0,
+      "value": 0
+    },
+    "edge_orin_p50_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 3.3709359995555133
+    },
+    "edge_orin_p95_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 4.4148895583930425
+    },
+    "smolvla_orin_control_rate_hz": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.836850504570623
+    },
+    "smolvla_orin_deadline_misses": {
+      "absolute_tolerance": 0,
+      "value": 500
+    },
+    "smolvla_replay_fresh_action_rate": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.02666666666666667
+    }
+  },
+  "schema_version": 1
+}

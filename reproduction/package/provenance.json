@@ -1,0 +1,37 @@
+{
+  "base_image": "python@sha256:519591d6871b7bc437060736b9f7456b8731f1499a57e22e6c285135ae657bf7",
+  "inputs": [
+    {
+      "bytes": 2270,
+      "package_path": "input/edge-quality.json",
+      "sha256": "91edd001f2d98ebbba6dd950aa9cd4dddde3e3ee00d9e7da45fcb4abeede1a5b",
+      "source_path": "data/runs/edge-pusht-final-evaluation-v1/summary.json"
+    },
+    {
+      "bytes": 4573,
+      "package_path": "input/edge-fixed-node.json",
+      "sha256": "1a2d795f8b1264df8c5a34c57b8d4b46bd36bc5a6c1c5f653b15889566bd1113",
+      "source_path": "data/runs/sys-05-fixed-node-v1/summary.json"
+    },
+    {
+      "bytes": 1253,
+      "package_path": "input/edge-orin.json",
+      "sha256": "b9ef4d69ea735414977406ff13ce176e0dad3534ff192153235f69bc276ff9d4",
+      "source_path": "evidence/orin/20260805-l4t3650/evidence/orin-03-edge-benchmark/benchmark.json"
+    },
+    {
+      "bytes": 1565,
+      "package_path": "input/smolvla-orin.json",
+      "sha256": "4397999766fa8cbdf66b7aac21d88306d48b9c52ee65af40681fadb6d5f9018f",
+      "source_path": "evidence/orin/20260805-l4t3650/evidence/orin-04-05-smolvla-benchmark/benchmark.json"
+    },
+    {
+      "bytes": 1769,
+      "package_path": "input/control-replay.json",
+      "sha256": "efeafe3fee7c11a8f4b830e72e74a05b043b1e7c636cfd96642445caa99184ea",
+      "source_path": "data/runs/orin-06-simulated-loop-v1/summary.json"
+    }
+  ],
+  "network_required_at_runtime": false,
+  "schema_version": 1
+}
