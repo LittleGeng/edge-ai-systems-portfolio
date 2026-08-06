@@ -1,0 +1,45 @@
+{
+  "captured_at": "2026-08-05T13:19:54+00:00",
+  "deadline_misses": 0,
+  "deadline_ms": 50.0,
+  "energy_j_per_action": null,
+  "engine_sha256": "770a439e18d20d43a48215d8305d88fc74be162c193ca0fa98efd2eac4400e60",
+  "gpu_p50_ms": 3.3028959035873413,
+  "gpu_p95_ms": 4.026683354377748,
+  "measured_iterations": 500,
+  "schema_version": 1,
+  "scope": "Target-board TensorRT U-Net inference; simulator and robot I/O are excluded.",
+  "task_id": "ORIN-03",
+  "telemetry": {
+    "energy_valid": false,
+    "gpu_utilization_mean_pct": 88.6875,
+    "power_mean_w": null,
+    "power_p95_w": null,
+    "rail_summaries": {
+      "VDD_CPU_CV": {
+        "mean_w": 0.4461875,
+        "p95_w": 0.793,
+        "samples": 16
+      },
+      "VDD_GPU_SOC": {
+        "mean_w": 5.8064375,
+        "p95_w": 6.4525,
+        "samples": 16
+      },
+      "VIN_SYS_5V0": {
+        "mean_w": 6.3311874999999995,
+        "p95_w": 6.67725,
+        "samples": 16
+      }
+    },
+    "ram_peak_mb": 5690,
+    "samples": 18,
+    "selected_total_power_rail": null
+  },
+  "tensorrt": "10.11.0.33",
+  "throughput_actions_s": 280.8688505956856,
+  "torch": "2.8.0a0+5228986c39.nv25.06",
+  "wall_p50_ms": 3.3709359995555133,
+  "wall_p95_ms": 4.4148895583930425,
+  "warmup_iterations": 50
+}

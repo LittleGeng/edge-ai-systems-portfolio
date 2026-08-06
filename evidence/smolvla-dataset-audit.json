@@ -1,0 +1,62 @@
+{
+  "audit_sha256": "b06d32ab090622f5d241adb13419705431b7df128d7ef0b1e4d308f1b5464079",
+  "dataset": {
+    "repo_id": "HuggingFaceVLA/libero",
+    "revision": "86958911c0f959db2bbbdb107eb3e17c5f9c798e"
+  },
+  "episode_lists": {
+    "final_train": {
+      "count": 384,
+      "sha256": "63a94341413de0d8cab2452716e9915c89e20174d6c3a491dd0d35e6451f82ee"
+    },
+    "heldout_audit": {
+      "count": 48,
+      "sha256": "21953e32153c5bafe21d8db179ad578e79c6bc54e362b6910c994fa5b09529a8"
+    },
+    "screening_30pct": {
+      "count": 120,
+      "sha256": "0fc3e2cba3d06d04131633acaec333beaa7d77ffb5d77ef04feb7499d1503477"
+    },
+    "tiny_overfit": {
+      "count": 10,
+      "sha256": "51d874b1169413dfa0fd3c11de62ae138614ddaef033ea0d49ae0415791a6a5b"
+    }
+  },
+  "gates": {
+    "episode_count_432": true,
+    "episode_metadata_counts_consistent": true,
+    "final_train_reused_by_vla04": true,
+    "frame_count_52970": true,
+    "pinned_revision": true,
+    "split_partition_complete": true,
+    "task_indices_30_to_39_present": true
+  },
+  "limitation": "The original per-frame audit.json and 377 data-shard hashes were not synchronized before the AutoDL nodes stopped. This recovery revalidates metadata counts and splits, but does not claim a second per-frame data-shard audit.",
+  "provenance": "Official pinned metadata was downloaded again and the original deterministic split algorithm was rerun; VLA-04 command evidence independently confirms final_train reuse.",
+  "raw_sources": {
+    "episodes_metadata": "data/runs/vla-01-recovered-audit-v1/raw/official-episodes.parquet",
+    "final_train_reuse": "data/runs/vla-04-final-evaluation-v1/nodes/D/training/candidate.txt",
+    "tasks_metadata": "data/runs/vla-01-recovered-audit-v1/raw/official-tasks.parquet"
+  },
+  "recovered_at": "2026-08-05T22:36:49+08:00",
+  "recovery_passed": true,
+  "schema_version": 1,
+  "subset": {
+    "episode_count": 432,
+    "frame_count": 52970,
+    "name": "libero_spatial",
+    "task_indices": [
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ]
+  },
+  "task_id": "VLA-01"
+}

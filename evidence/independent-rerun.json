@@ -1,0 +1,92 @@
+{
+  "baseline": {
+    "engine_sha256": "770a439e18d20d43a48215d8305d88fc74be162c193ca0fa98efd2eac4400e60",
+    "p50_ms": 3.3709359995555133,
+    "p95_ms": 4.4148895583930425
+  },
+  "evidence": {
+    "engine_build": "evidence/orin/20260805-l4t3650/evidence/orin-rel03-edge-build-rerun",
+    "latency": "evidence/orin/20260805-l4t3650/evidence/orin-rel03-edge-rerun-500",
+    "pusht": "data/runs/rel-03-pusht-rerun-v1"
+  },
+  "gates": {
+    "correctness_20_of_20": true,
+    "deadline_misses_reproduce": true,
+    "equal_size_latency_rerun": true,
+    "independent_engine_build_on_orin": true,
+    "p50_within_5_percent": true,
+    "p95_within_10_percent": true,
+    "pusht_mean_score_within_declared_tolerance": true,
+    "pusht_raw_identity_matches": true,
+    "pusht_remote_hashes_verified": true,
+    "pusht_same_frozen_checkpoint": true,
+    "pusht_same_frozen_repository": true,
+    "pusht_same_twenty_seeds": true,
+    "pusht_success_within_declared_tolerance": true,
+    "pusht_summary_matches_raw": true,
+    "pusht_summary_seed_range_matches": true,
+    "pusht_task_id_is_rel03": true,
+    "pusht_twenty_unique_episodes": true,
+    "same_frozen_onnx": true
+  },
+  "passed": true,
+  "pusht": {
+    "absolute_delta": {
+      "high_quality_completion_rate": 0.0,
+      "max_episode_task_score": 3.3306690738754696e-16,
+      "mean_episode_task_score": 2.4980018054066023e-17,
+      "mean_task_score": 0.0
+    },
+    "baseline": {
+      "episodes": 20,
+      "high_quality_completion_rate": 0.9,
+      "mean_task_score": 0.9220333165446147
+    },
+    "evidence": "data/runs/rel-03-pusht-rerun-v1",
+    "gates": {
+      "mean_score_within_declared_tolerance": true,
+      "raw_identity_matches": true,
+      "remote_hashes_verified": true,
+      "same_frozen_checkpoint": true,
+      "same_frozen_repository": true,
+      "same_twenty_seeds": true,
+      "success_within_declared_tolerance": true,
+      "summary_matches_raw": true,
+      "summary_seed_range_matches": true,
+      "task_id_is_rel03": true,
+      "twenty_unique_episodes": true
+    },
+    "rerun": {
+      "episodes": 20,
+      "high_quality_completion_rate": 0.9,
+      "mean_task_score": 0.9220333165446147
+    },
+    "seeds": {
+      "start": 4400000,
+      "stop_inclusive": 4400019
+    },
+    "tolerance": {
+      "success_absolute": 0.02
+    }
+  },
+  "relative_delta": {
+    "p50": 0.012663691757249351,
+    "p95": 0.07814779867211885
+  },
+  "rerun": {
+    "correctness": {
+      "atol": 0.05,
+      "cases": 20,
+      "max_abs_error": 0.013233184814453125,
+      "mean_abs_error": 0.0017566935857757926,
+      "passed": true,
+      "rtol": 0.05
+    },
+    "engine_sha256": "9b3c432ef66f3040bf32df7561395c9bc55ae1f8e088fa32e67cb0595f82349a",
+    "p50_ms": 3.4136244939872995,
+    "p95_ms": 4.069875658024103
+  },
+  "schema_version": 1,
+  "scope": "Independent Orin build/latency rerun plus same-seed official Push-T simulator success rerun.",
+  "task_id": "REL-03"
+}

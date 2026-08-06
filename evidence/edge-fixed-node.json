@@ -1,0 +1,162 @@
+{
+  "benchmark_protocol": {
+    "denoising_measurement_iterations": 30,
+    "denoising_warmup_iterations": 2,
+    "power_sampling_interval_seconds": 0.1,
+    "unet_forward_measurement_iterations": 500,
+    "unet_forward_warmup_iterations": 30
+  },
+  "build_seconds": {
+    "torch_compile": 4.672281299717724,
+    "torch_tensorrt": 10.441940265707672
+  },
+  "checkpoint_sha256": "f804e16575e261fa0b7e981da3f67741fc8517817734320d550e43a4182bf876",
+  "cuda": "12.4",
+  "denoising_100_steps": {
+    "eager": {
+      "incremental_peak_allocated_bytes": 21363712,
+      "iterations": 30,
+      "mean_ms": 567.3023783365885,
+      "p50_ms": 566.708740234375,
+      "p95_ms": 570.3584655761719,
+      "power_draw_w": {
+        "max": 135.92,
+        "mean": 96.67170542635658,
+        "p95": 115.132,
+        "samples": 129
+      },
+      "throughput_per_second_from_p50": 1.7645748671291495
+    },
+    "torch_compile": {
+      "incremental_peak_allocated_bytes": 21357568,
+      "iterations": 30,
+      "mean_ms": 348.4016581217448,
+      "p50_ms": 347.3392639160156,
+      "p95_ms": 356.4411987304687,
+      "power_draw_w": {
+        "max": 111.4,
+        "mean": 109.62416666666667,
+        "p95": 111.263,
+        "samples": 72
+      },
+      "throughput_per_second_from_p50": 2.879029536498913
+    },
+    "torch_tensorrt": {
+      "incremental_peak_allocated_bytes": 12800,
+      "iterations": 30,
+      "mean_ms": 236.12657267252604,
+      "p50_ms": 235.7980194091797,
+      "p95_ms": 237.93243713378905,
+      "power_draw_w": {
+        "max": 134.92,
+        "mean": 131.4072,
+        "p95": 134.8765,
+        "samples": 50
+      },
+      "throughput_per_second_from_p50": 4.240917724863086
+    }
+  },
+  "denoising_correctness": {
+    "eager": {
+      "max_abs": 0.0,
+      "mean_abs": 0.0
+    },
+    "torch_compile": {
+      "max_abs": 6.586313247680664e-05,
+      "mean_abs": 1.5960658856783994e-05
+    },
+    "torch_tensorrt": {
+      "max_abs": 0.00010021030902862549,
+      "mean_abs": 1.6929954654187895e-05
+    }
+  },
+  "diffusers": "0.11.1",
+  "engine": {
+    "bytes": 358180568,
+    "path": "pusht-unet-tensorrt.ep",
+    "save_error": null,
+    "saved": true
+  },
+  "fixed_gpu_state_capture": {
+    "fields": [
+      "pstate",
+      "power.limit",
+      "clocks.current.sm",
+      "clocks.current.memory"
+    ],
+    "source": "nvidia-smi query at benchmark completion",
+    "value": "NVIDIA GeForce RTX 4090, GPU-8feb0086-f950-6b21-f238-bee3f57fcd1b, 580.142, 24564, P2, 450.00, 2745, 10251"
+  },
+  "gpu": "NVIDIA GeForce RTX 4090, GPU-8feb0086-f950-6b21-f238-bee3f57fcd1b, 580.142, 24564, P2, 450.00, 2745, 10251",
+  "node_id": "C",
+  "operator_correctness": {
+    "eager": {
+      "max_abs": 0.0,
+      "max_mean_abs": 0.0,
+      "tested_timesteps": [
+        0,
+        1,
+        25,
+        50,
+        99
+      ]
+    },
+    "torch_compile": {
+      "max_abs": 0.001355290412902832,
+      "max_mean_abs": 0.00026099919341504574,
+      "tested_timesteps": [
+        0,
+        1,
+        25,
+        50,
+        99
+      ]
+    },
+    "torch_tensorrt": {
+      "max_abs": 0.0016736984252929688,
+      "max_mean_abs": 0.0003952201223000884,
+      "tested_timesteps": [
+        0,
+        1,
+        25,
+        50,
+        99
+      ]
+    }
+  },
+  "quality_gate": "Push-T task-quality evaluation is required before claiming behavior preservation.",
+  "repository_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+  "schema_version": 1,
+  "scope": "fixed-shape U-Net and 100-step denoising loop after condition tensor construction",
+  "state_sha256": "5cbde235aa9c07663f9a40b39236d5d3dc9cdb5e013b552c09f1cab1796de442",
+  "task_id": "SYS-02",
+  "tensorrt": "10.3.0",
+  "torch": "2.5.1+cu124",
+  "torch_tensorrt": "2.5.0+cu124",
+  "unet_forward": {
+    "eager": {
+      "incremental_peak_allocated_bytes": 21358080,
+      "iterations": 500,
+      "mean_ms": 5.191860922813415,
+      "p50_ms": 5.157887935638428,
+      "p95_ms": 5.211187076568603,
+      "throughput_per_second_from_p50": 193.87780666782226
+    },
+    "torch_compile": {
+      "incremental_peak_allocated_bytes": 21351936,
+      "iterations": 500,
+      "mean_ms": 2.9855254983901975,
+      "p50_ms": 2.977743983268738,
+      "p95_ms": 3.0280143380165097,
+      "throughput_per_second_from_p50": 335.82470676417154
+    },
+    "torch_tensorrt": {
+      "incremental_peak_allocated_bytes": 1536,
+      "iterations": 500,
+      "mean_ms": 2.097128113269806,
+      "p50_ms": 2.0828158855438232,
+      "p95_ms": 2.1934080123901367,
+      "throughput_per_second_from_p50": 480.1192495893126
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "base_model_revision": "c83c3163b8ca9b7e67c509fffd9121e66cb96205",
+  "captured_at": "2026-08-05T13:50:46+00:00",
+  "control_rate_hz": 0.836850504570623,
+  "deadline_misses": 500,
+  "deadline_ms": 33.333333333333336,
+  "energy_j_per_action": null,
+  "first_action_p50_ms": 1190.173634502571,
+  "first_action_p95_ms": 1230.9902519489697,
+  "lerobot_revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+  "measured_iterations": 500,
+  "peft_dtensor_compat_shim": true,
+  "policy_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+  "schema_version": 1,
+  "scope": "Synthetic-input runtime benchmark only; not physical-robot or closed-loop evidence.",
+  "steady_chunk_p50_ms": 1191.741118003847,
+  "steady_chunk_p95_ms": 1230.5976366500545,
+  "synthetic_input": true,
+  "task_ids": [
+    "ORIN-04",
+    "ORIN-05"
+  ],
+  "telemetry": {
+    "energy_valid": false,
+    "gpu_utilization_mean_pct": 51.054794520547944,
+    "power_mean_w": null,
+    "power_p95_w": null,
+    "rail_summaries": {
+      "VDD_CPU_CV": {
+        "mean_w": 0.8122033165104543,
+        "p95_w": 1.19,
+        "samples": 11096
+      },
+      "VDD_GPU_SOC": {
+        "mean_w": 4.584576063446287,
+        "p95_w": 5.954,
+        "samples": 11096
+      },
+      "VIN_SYS_5V0": {
+        "mean_w": 5.236711968276857,
+        "p95_w": 5.644,
+        "samples": 11096
+      }
+    },
+    "ram_peak_mb": 7360,
+    "samples": 11098,
+    "selected_total_power_rail": null
+  },
+  "vlm_metadata_revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+  "warmup_iterations": 50
+}

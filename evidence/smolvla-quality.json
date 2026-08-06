@@ -1,0 +1,94 @@
+{
+  "candidates": [
+    {
+      "adapter_bytes": 11893824,
+      "adapter_sha256": "6855cccf1776a87b2d549a29b35c284ad81fbc423ced3b43de4069000624aa96",
+      "checkpoint_evidence": "nodes/D/checkpoint",
+      "evaluation_evidence": "nodes/D/evaluation",
+      "last_window_median_loss": 0.11,
+      "learning_rate": 0.001,
+      "node_id": "D",
+      "rank": 64,
+      "success_rate": 0.1,
+      "training_evidence": "nodes/D/training",
+      "training_seed": 42
+    },
+    {
+      "adapter_bytes": 11893824,
+      "adapter_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+      "checkpoint_evidence": "nodes/E/checkpoint",
+      "evaluation_evidence": "nodes/E/evaluation",
+      "last_window_median_loss": 0.105,
+      "learning_rate": 0.001,
+      "node_id": "E",
+      "rank": 64,
+      "success_rate": 0.16,
+      "training_evidence": "nodes/E/training",
+      "training_seed": 43
+    },
+    {
+      "adapter_bytes": 11893824,
+      "adapter_sha256": "e6b2a9a946625b1d8b715aef04205e71a1cae0eab0fccb8112e36a0be3a0cbeb",
+      "checkpoint_evidence": "nodes/F/checkpoint",
+      "evaluation_evidence": "nodes/F/evaluation",
+      "last_window_median_loss": 0.101,
+      "learning_rate": 0.001,
+      "node_id": "F",
+      "rank": 64,
+      "success_rate": 0.24,
+      "training_evidence": "nodes/F/training",
+      "training_seed": 44
+    }
+  ],
+  "claim_scope": "Generalization tasks were excluded from VLA-02 model selection but were present in final fine-tuning data; this is not a zero-shot task-transfer claim.",
+  "conditions": {
+    "generalization_selection_heldout_tasks": {
+      "condition": "generalization_selection_heldout_tasks",
+      "success_rate": 0.18095238095238095,
+      "success_rate_by_training_seed": {
+        "42": 0.08571428571428572,
+        "43": 0.2,
+        "44": 0.2571428571428571
+      },
+      "total_run_episodes": 105,
+      "two_stage_bootstrap_95_ci": {
+        "high": 0.29523809523809524,
+        "low": 0.0761904761904762,
+        "resamples": 10000,
+        "rng_seed": 20260804,
+        "unit": "training seed, then environment episode within seed"
+      },
+      "unique_environment_episodes": 35
+    },
+    "main_selection_tasks": {
+      "condition": "main_selection_tasks",
+      "success_rate": 0.13333333333333333,
+      "success_rate_by_training_seed": {
+        "42": 0.13333333333333333,
+        "43": 0.06666666666666667,
+        "44": 0.2
+      },
+      "total_run_episodes": 45,
+      "two_stage_bootstrap_95_ci": {
+        "high": 0.26666666666666666,
+        "low": 0.022222222222222223,
+        "resamples": 10000,
+        "rng_seed": 20260804,
+        "unit": "training seed, then environment episode within seed"
+      },
+      "unique_environment_episodes": 15
+    }
+  },
+  "episode_evidence": "episodes.jsonl",
+  "generated_at": "2026-08-04T05:12:31+08:00",
+  "main_and_generalization_episode_ids_disjoint": true,
+  "protocol_id": "smolvla-libero-spatial-selection-generalization-v1",
+  "schema_version": 1,
+  "task_id": "VLA-04",
+  "total_run_episodes": 150,
+  "training_seeds": [
+    42,
+    43,
+    44
+  ]
+}

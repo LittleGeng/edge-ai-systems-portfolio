@@ -1,0 +1,8 @@
+{
+  "atol": 0.05,
+  "cases": 20,
+  "max_abs_error": 0.011283397674560547,
+  "mean_abs_error": 0.001746815163642168,
+  "passed": true,
+  "rtol": 0.05
+}

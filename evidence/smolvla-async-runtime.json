@@ -1,0 +1,224 @@
+{
+  "acceptance_gates": {
+    "atomic_queue_replacement_under_lock": true,
+    "first_action_chunk_jitter_and_deadline_metrics_recorded": true,
+    "inference_and_control_threads_decoupled": true,
+    "official_queue_primitive_used": true,
+    "queue_starvation_recorded": true,
+    "safe_fallback_recorded": true,
+    "stale_action_discard_recorded": true,
+    "sync_async_task_and_seeds_identical": true
+  },
+  "adapter_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+  "aggregate": {
+    "async_deadline_miss_total": 28,
+    "async_fallback_total": 0,
+    "async_first_action": {
+      "count": 2,
+      "max_ms": 287.21743,
+      "mean_ms": 286.590609,
+      "p50_ms": 285.963788,
+      "p95_ms": 287.21743
+    },
+    "async_queue_empty_total": 0,
+    "async_stale_actions_discarded_total": 232,
+    "async_success_rate": 0.0,
+    "sync_deadline_miss_total": 470,
+    "sync_first_action": {
+      "count": 2,
+      "max_ms": 620.431786,
+      "mean_ms": 439.2239785,
+      "p50_ms": 258.016171,
+      "p95_ms": 620.431786
+    },
+    "sync_success_rate": 0.0
+  },
+  "checkpoint": "<runtime-path-redacted>",
+  "generated_at": "2026-08-04T05:14:02+08:00",
+  "lerobot_revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+  "node_id": "E",
+  "official_runtime_components": [
+    "lerobot.async_inference.robot_client.RobotClient._aggregate_action_queues",
+    "lerobot.async_inference.helpers.TimedAction",
+    "SmolVLAPolicy.predict_action_chunk"
+  ],
+  "protocol": {
+    "actions_per_chunk": 50,
+    "chunk_size_threshold": 0.5,
+    "deadline_ms": 33.333333333333336,
+    "fallback": "repeat_last_action",
+    "fps": 30,
+    "overlap_aggregate": "0.3 * old + 0.7 * new",
+    "paired_seeds": [
+      20260804,
+      20260805
+    ],
+    "suite": "libero_spatial",
+    "task_id": 0
+  },
+  "runs": [
+    {
+      "action_ready_latency": {
+        "count": 280,
+        "max_ms": 620.431786,
+        "mean_ms": 21.351709675,
+        "p50_ms": 8.064455,
+        "p95_ms": 55.583998
+      },
+      "control_jitter_ms_stddev": 56.03979985984883,
+      "control_latency": {
+        "count": 280,
+        "max_ms": 643.120306,
+        "mean_ms": 82.05766784285714,
+        "p50_ms": 84.927323,
+        "p95_ms": 113.545224
+      },
+      "deadline_miss_count": 243,
+      "deadline_ms": 33.333333333333336,
+      "fallback_count": 0,
+      "first_action_ms": 620.431786,
+      "max_reward": 0.0,
+      "mode": "sync",
+      "policy_call_latency": {
+        "count": 280,
+        "max_ms": 604.66353,
+        "mean_ms": 18.119814185714286,
+        "p50_ms": 5.627988,
+        "p95_ms": 51.028452
+      },
+      "queue_empty_count": 0,
+      "seed": 20260804,
+      "stale_actions_discarded": 0,
+      "steps": 280,
+      "success": false,
+      "sum_reward": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "chunk_latency": {
+        "count": 11,
+        "max_ms": 462.574827,
+        "mean_ms": 394.3934613636364,
+        "p50_ms": 390.480258,
+        "p95_ms": 462.574827
+      },
+      "chunks_published": 11,
+      "control_jitter_ms_stddev": 2.1527399075565232,
+      "control_period": {
+        "count": 279,
+        "max_ms": 56.163195,
+        "mean_ms": 33.940099397849465,
+        "p50_ms": 33.396509,
+        "p95_ms": 38.465934
+      },
+      "control_work_latency": {
+        "count": 280,
+        "max_ms": 56.157321,
+        "mean_ms": 24.98234350357143,
+        "p50_ms": 23.871217,
+        "p95_ms": 34.551499
+      },
+      "deadline_miss_count": 16,
+      "deadline_ms": 33.333333333333336,
+      "fallback_count": 0,
+      "fallback_policy": "repeat_last_action",
+      "first_action_ms": 287.21743,
+      "max_reward": 0.0,
+      "mode": "async",
+      "queue_empty_count": 0,
+      "seed": 20260804,
+      "stale_actions_discarded": 118,
+      "steps": 280,
+      "success": false,
+      "sum_reward": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "action_ready_latency": {
+        "count": 280,
+        "max_ms": 332.369663,
+        "mean_ms": 18.839673164285713,
+        "p50_ms": 7.237066,
+        "p95_ms": 56.344505
+      },
+      "control_jitter_ms_stddev": 46.135751174499404,
+      "control_latency": {
+        "count": 280,
+        "max_ms": 354.904605,
+        "mean_ms": 79.82135393928571,
+        "p50_ms": 83.609584,
+        "p95_ms": 108.612952
+      },
+      "deadline_miss_count": 227,
+      "deadline_ms": 33.333333333333336,
+      "fallback_count": 0,
+      "first_action_ms": 258.016171,
+      "max_reward": 0.0,
+      "mode": "sync",
+      "policy_call_latency": {
+        "count": 280,
+        "max_ms": 330.382823,
+        "mean_ms": 15.3827464,
+        "p50_ms": 4.944572,
+        "p95_ms": 48.425925
+      },
+      "queue_empty_count": 0,
+      "seed": 20260805,
+      "stale_actions_discarded": 0,
+      "steps": 280,
+      "success": false,
+      "sum_reward": 0.0,
+      "terminated": false,
+      "truncated": false
+    },
+    {
+      "chunk_latency": {
+        "count": 11,
+        "max_ms": 418.982387,
+        "mean_ms": 383.7263565454545,
+        "p50_ms": 390.132181,
+        "p95_ms": 418.982387
+      },
+      "chunks_published": 11,
+      "control_jitter_ms_stddev": 2.6042096186184422,
+      "control_period": {
+        "count": 279,
+        "max_ms": 63.591548,
+        "mean_ms": 33.988450369175624,
+        "p50_ms": 33.396488,
+        "p95_ms": 38.469943
+      },
+      "control_work_latency": {
+        "count": 280,
+        "max_ms": 63.584532,
+        "mean_ms": 24.98965102142857,
+        "p50_ms": 24.052975,
+        "p95_ms": 26.967236
+      },
+      "deadline_miss_count": 12,
+      "deadline_ms": 33.333333333333336,
+      "fallback_count": 0,
+      "fallback_policy": "repeat_last_action",
+      "first_action_ms": 285.963788,
+      "max_reward": 0.0,
+      "mode": "async",
+      "queue_empty_count": 0,
+      "seed": 20260805,
+      "stale_actions_discarded": 114,
+      "steps": 280,
+      "success": false,
+      "sum_reward": 0.0,
+      "terminated": false,
+      "truncated": false
+    }
+  ],
+  "schema_version": 1,
+  "scope": "paired LIBERO simulation runtime benchmark; not physical-robot or Jetson evidence",
+  "task_ids": [
+    "VLA-05",
+    "VLA-06",
+    "VLA-07"
+  ]
+}
