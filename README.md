@@ -17,7 +17,7 @@ flowchart LR
     B --> C["Fixed-node optimization gates"]
     C --> D["Jetson AGX Orin deployment"]
     D --> E["Independent rerun and claim audit"]
-    E --> F["Results, demos, and interview evidence"]
+    E --> F["Results, demos, and reproducibility evidence"]
 ```
 
 ## Review path
@@ -26,7 +26,6 @@ flowchart LR
 2. Inspect the [claim-to-evidence map](docs/evidence-map.md) and [failure analysis](docs/failure-analysis.md).
 3. Open the two 120-second walkthroughs: [EdgeDiffusion](demos/edge-diffusion-evidence-walkthrough.mp4) and [SmolVLA](demos/smolvla-edge-evidence-walkthrough.mp4).
 4. Run the frozen, networkless aggregation check described in [reproduction/README.md](reproduction/README.md).
-5. Use the [60-question interview bank](docs/interview-qa.md) for progressively deeper discussion.
 
 ## Reproduce the published numbers
 
