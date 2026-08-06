@@ -1,0 +1,131 @@
+{
+  "rows": [
+    {
+      "claim_id": "EDGE-SUCCESS",
+      "evidence": "evidence/edge-quality.json",
+      "metric": "Push-T high-quality completion",
+      "project": "edge-diffusion",
+      "scope": "60 official-checkpoint simulator episodes",
+      "unit": "ratio",
+      "value": 0.95
+    },
+    {
+      "claim_id": "EDGE-SUCCESS-RERUN",
+      "evidence": "evidence/independent-rerun.json",
+      "metric": "Same-seed Push-T rerun high-quality completion",
+      "project": "edge-diffusion",
+      "scope": "20 same-seed official-checkpoint episodes; independent rerun",
+      "unit": "ratio",
+      "value": 0.9
+    },
+    {
+      "claim_id": "EDGE-4090-EAGER",
+      "evidence": "evidence/edge-fixed-node.json",
+      "metric": "100-step eager denoising P50",
+      "project": "edge-diffusion",
+      "scope": "fixed RTX 4090 node",
+      "unit": "ms",
+      "value": 566.708740234375
+    },
+    {
+      "claim_id": "EDGE-4090-TRT",
+      "evidence": "evidence/edge-fixed-node.json",
+      "metric": "100-step TensorRT denoising P50",
+      "project": "edge-diffusion",
+      "scope": "fixed RTX 4090 node",
+      "unit": "ms",
+      "value": 235.7980194091797
+    },
+    {
+      "claim_id": "EDGE-4090-SPEEDUP",
+      "evidence": "evidence/edge-fixed-node.json",
+      "metric": "TensorRT denoising speedup",
+      "project": "edge-diffusion",
+      "scope": "P50 ratio on same node",
+      "unit": "x",
+      "value": 2.403365141294791
+    },
+    {
+      "claim_id": "EDGE-ORIN-P50",
+      "evidence": "evidence/edge-orin.json",
+      "metric": "Orin FP16 U-Net wall P50",
+      "project": "edge-diffusion",
+      "scope": "U-Net inference only; no simulator/robot I/O",
+      "unit": "ms",
+      "value": 3.3709359995555133
+    },
+    {
+      "claim_id": "EDGE-ORIN-P95",
+      "evidence": "evidence/edge-orin.json",
+      "metric": "Orin FP16 U-Net wall P95",
+      "project": "edge-diffusion",
+      "scope": "U-Net inference only; no simulator/robot I/O",
+      "unit": "ms",
+      "value": 4.4148895583930425
+    },
+    {
+      "claim_id": "EDGE-ORIN-MISS",
+      "evidence": "evidence/edge-orin.json",
+      "metric": "Orin 50 ms deadline misses",
+      "project": "edge-diffusion",
+      "scope": "measured board inference",
+      "unit": "count/500",
+      "value": 0
+    },
+    {
+      "claim_id": "VLA-MAIN",
+      "evidence": "evidence/smolvla-quality.json",
+      "metric": "Main-condition success",
+      "project": "smolvla-edge",
+      "scope": "3 seeds, 45 runs; no zero-shot claim",
+      "unit": "ratio",
+      "value": 0.13333333333333333
+    },
+    {
+      "claim_id": "VLA-GEN",
+      "evidence": "evidence/smolvla-quality.json",
+      "metric": "Secondary-condition success",
+      "project": "smolvla-edge",
+      "scope": "tasks excluded from selection but included in final fine-tuning",
+      "unit": "ratio",
+      "value": 0.18095238095238095
+    },
+    {
+      "claim_id": "VLA-ORIN-P50",
+      "evidence": "evidence/smolvla-orin.json",
+      "metric": "Orin steady chunk P50",
+      "project": "smolvla-edge",
+      "scope": "synthetic input, PyTorch path",
+      "unit": "ms",
+      "value": 1191.741118003847
+    },
+    {
+      "claim_id": "VLA-ORIN-RATE",
+      "evidence": "evidence/smolvla-orin.json",
+      "metric": "Orin control rate",
+      "project": "smolvla-edge",
+      "scope": "synthetic input, PyTorch path",
+      "unit": "Hz",
+      "value": 0.836850504570623
+    },
+    {
+      "claim_id": "VLA-ORIN-MISS",
+      "evidence": "evidence/smolvla-orin.json",
+      "metric": "Orin 30 Hz deadline misses",
+      "project": "smolvla-edge",
+      "scope": "every measured inference missed",
+      "unit": "count/500",
+      "value": 500
+    },
+    {
+      "claim_id": "VLA-REPLAY-FRESH",
+      "evidence": "evidence/control-replay.json",
+      "metric": "30 Hz replay fresh-action ticks",
+      "project": "smolvla-edge",
+      "scope": "offline timing replay, not task execution",
+      "unit": "ratio",
+      "value": 0.02666666666666667
+    }
+  ],
+  "schema_version": 1
+}

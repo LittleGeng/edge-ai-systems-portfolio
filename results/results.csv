@@ -1,0 +1,15 @@
+claim_id,project,metric,value,unit,evidence,scope
+EDGE-SUCCESS,edge-diffusion,Push-T high-quality completion,0.95,ratio,evidence/edge-quality.json,60 official-checkpoint simulator episodes
+EDGE-SUCCESS-RERUN,edge-diffusion,Same-seed Push-T rerun high-quality completion,0.9,ratio,evidence/independent-rerun.json,20 same-seed official-checkpoint episodes; independent rerun
+EDGE-4090-EAGER,edge-diffusion,100-step eager denoising P50,566.708740234375,ms,evidence/edge-fixed-node.json,fixed RTX 4090 node
+EDGE-4090-TRT,edge-diffusion,100-step TensorRT denoising P50,235.7980194091797,ms,evidence/edge-fixed-node.json,fixed RTX 4090 node
+EDGE-4090-SPEEDUP,edge-diffusion,TensorRT denoising speedup,2.403365141294791,x,evidence/edge-fixed-node.json,P50 ratio on same node
+EDGE-ORIN-P50,edge-diffusion,Orin FP16 U-Net wall P50,3.3709359995555133,ms,evidence/edge-orin.json,U-Net inference only; no simulator/robot I/O
+EDGE-ORIN-P95,edge-diffusion,Orin FP16 U-Net wall P95,4.4148895583930425,ms,evidence/edge-orin.json,U-Net inference only; no simulator/robot I/O
+EDGE-ORIN-MISS,edge-diffusion,Orin 50 ms deadline misses,0,count/500,evidence/edge-orin.json,measured board inference
+VLA-MAIN,smolvla-edge,Main-condition success,0.13333333333333333,ratio,evidence/smolvla-quality.json,"3 seeds, 45 runs; no zero-shot claim"
+VLA-GEN,smolvla-edge,Secondary-condition success,0.18095238095238095,ratio,evidence/smolvla-quality.json,tasks excluded from selection but included in final fine-tuning
+VLA-ORIN-P50,smolvla-edge,Orin steady chunk P50,1191.741118003847,ms,evidence/smolvla-orin.json,"synthetic input, PyTorch path"
+VLA-ORIN-RATE,smolvla-edge,Orin control rate,0.836850504570623,Hz,evidence/smolvla-orin.json,"synthetic input, PyTorch path"
+VLA-ORIN-MISS,smolvla-edge,Orin 30 Hz deadline misses,500,count/500,evidence/smolvla-orin.json,every measured inference missed
+VLA-REPLAY-FRESH,smolvla-edge,30 Hz replay fresh-action ticks,0.02666666666666667,ratio,evidence/control-replay.json,"offline timing replay, not task execution"
