@@ -1,0 +1,41 @@
+{
+  "decision": "EdgeDiffusion inference is suitable for a 20 Hz integration attempt; current SmolVLA PyTorch execution is rejected for a 30 Hz direct-control claim.",
+  "edge_diffusion_20hz": {
+    "duration_s": 10.0,
+    "fallback_rate": 0.005,
+    "fresh_action_rate": 0.995,
+    "fresh_action_ticks": 199,
+    "inference_completions": 2797,
+    "period_ms": 50.0,
+    "safe_fallback_ticks": 1,
+    "stale_action_ticks": 1,
+    "target_rate_hz": 20.0,
+    "ticks": 200
+  },
+  "failure_cases": [
+    "SmolVLA first action arrives after about 1.19 seconds, so startup has no fresh action.",
+    "Steady inference is about 0.837 Hz; buffering cannot create 30 Hz policy freshness.",
+    "The rented board exposes no confirmed total-module power rail, so energy per action remains null.",
+    "Synthetic observation inputs do not establish task success or robustness to real sensor shift."
+  ],
+  "input_provenance": {
+    "edge": "evidence/orin/20260805-l4t3650/evidence/orin-03-edge-benchmark/timings.csv",
+    "smolvla": "evidence/orin/20260805-l4t3650/evidence/orin-04-05-smolvla-benchmark/timings.csv"
+  },
+  "policy": "Newest completed action is used; action older than two control periods triggers safe fallback.",
+  "schema_version": 1,
+  "scope": "Offline scheduler replay using measured physical-Orin inference timings; not a simulator task-success run and not a physical-robot closed loop.",
+  "smolvla_30hz": {
+    "duration_s": 10.0,
+    "fallback_rate": 0.9466666666666667,
+    "fresh_action_rate": 0.02666666666666667,
+    "fresh_action_ticks": 8,
+    "inference_completions": 8,
+    "period_ms": 33.333333333333336,
+    "safe_fallback_ticks": 284,
+    "stale_action_ticks": 292,
+    "target_rate_hz": 30.0,
+    "ticks": 300
+  },
+  "task_id": "ORIN-06"
+}
