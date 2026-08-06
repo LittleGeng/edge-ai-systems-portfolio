@@ -19,12 +19,15 @@ REQUIRED = {
     "projects/smolvla-edge.md",
     "docs/evidence-map.md",
     "docs/failure-analysis.md",
-    "docs/interview-qa.md",
     "results/results.csv",
     "figures/latency-comparison.svg",
     "demos/edge-diffusion-evidence-walkthrough.mp4",
     "demos/smolvla-edge-evidence-walkthrough.mp4",
     "reproduction/package/reproduce.py",
+}
+FORBIDDEN_PATHS = {
+    "docs/interview-qa.json",
+    "docs/interview-qa.md",
 }
 FORBIDDEN_TEXT = {
     "/home/geng": "private home path",
@@ -66,6 +69,7 @@ def main() -> int:
     files = [path for path in root.rglob("*") if path.is_file() and ".git" not in path.parts]
     relative = {str(path.relative_to(root)) for path in files}
     errors.extend(f"missing required file: {name}" for name in sorted(REQUIRED - relative))
+    errors.extend(f"interview Q&A must remain private: {name}" for name in sorted(FORBIDDEN_PATHS & relative))
 
     for path in files:
         rel = str(path.relative_to(root))
