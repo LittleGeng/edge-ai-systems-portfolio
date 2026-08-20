@@ -1,42 +1,44 @@
-# EdgeDiffusion systems deployment
+# EdgeDiffusion deployment study
 
-## Claim
+## What I built
 
-This project connects task quality, profiling, compiler selection and target-board deployment. The official Diffusion Policy checkpoint reached **95%** high-quality completion over 60 Push-T episodes. A separate same-seed 20-episode rerun reached **90%**, exactly matching its 20-episode baseline and passing the predeclared 2 percentage-point rerun tolerance. On one fixed RTX 4090, TensorRT reduced the 100-step denoising-loop P50 from **566.71 ms** to **235.80 ms** (**2.40x**). A board-native FP16 U-Net engine on Jetson AGX Orin reached **3.37/4.41 ms P50/P95** with **0/500** 50 ms deadline misses.
+This project follows a Diffusion Policy workload from simulator evaluation to GPU optimization and Jetson deployment. The official checkpoint achieved **95%** high-quality completion over 60 Push-T episodes. A separate 20-episode rerun used the same seeds as its reference run and reproduced the same **90%** result.
 
-## Method
+On one fixed RTX 4090, TensorRT reduced P50 for the 100-step denoising loop from **566.71 ms** to **235.80 ms**, a **2.40x** speedup. I then built an FP16 U-Net engine directly on Jetson AGX Orin. A single U-Net call measured **3.37/4.41 ms P50/P95**, with **0/500** misses against a 50 ms target.
 
-- Pinned upstream repository, checkpoint and evaluation seeds.
-- Separated operator, denoising-loop and simulator episode measurements.
-- Required numerical and Push-T quality gates before performance claims.
-- Built the final engine on Orin and retained target-board timing and telemetry.
+## How I evaluated it
 
-## Supplemental step-count quality sweep
+- Kept the upstream revision, checkpoint, and evaluation seeds fixed across comparisons.
+- Timed individual operators, the full denoising loop, and simulator episodes separately.
+- Checked numerical differences and Push-T task quality before treating a faster backend as usable.
+- Built the final engine on the Orin itself and retained board timing and telemetry.
 
-The frozen checkpoint was evaluated on paired 20-episode Push-T seed windows at five denoising step counts. The controller P50 fell from **1076.5 ms** at 100 steps to **65.2 ms** at 6 steps, but only the 100-step condition passed the predeclared mean-score and completion-rate gates. The lower-step variants are therefore measured speed/quality tradeoffs, not deployment recommendations.
+## Denoising-step tradeoff
 
-| Denoising steps | Controller P50 | Mean score | High-quality completion | Quality gate |
+I evaluated 100, 20, 10, 8, and 6 denoising steps on matched 20-episode Push-T seed sets. Controller P50 fell from **1076.5 ms** at 100 steps to **65.2 ms** at 6 steps, but only the 100-step setting stayed within the preset mean-score and completion-rate differences.
+
+| Denoising steps | Controller P50 | Mean score | High-quality completion | Result |
 |---:|---:|---:|---:|---|
-| 100 | 1076.5 ms | 0.922 | 90% | PASS |
-| 20 | 217.6 ms | 0.119 | 0% | REJECT |
-| 10 | 88.4 ms | 0.093 | 0% | REJECT |
-| 8 | 80.4 ms | 0.067 | 0% | REJECT |
-| 6 | 65.2 ms | 0.104 | 0% | REJECT |
+| 100 | 1076.5 ms | 0.922 | 90% | Quality retained |
+| 20 | 217.6 ms | 0.119 | 0% | Too much quality loss |
+| 10 | 88.4 ms | 0.093 | 0% | Too much quality loss |
+| 8 | 80.4 ms | 0.067 | 0% | Too much quality loss |
+| 6 | 65.2 ms | 0.104 | 0% | Too much quality loss |
 
-## Complete denoising loop on physical Orin
+## Complete loop on Orin
 
-The TensorRT U-Net was measured inside the frozen scheduler with synthetic fixed-shape tensors. The 100-step quality reference measured **557.81/568.67 ms P50/P95** and missed all 20 local 50 ms deadlines. Six steps reached **32.43/36.28 ms** with 0/20 misses, but its paired Push-T condition produced **0%** high-quality completion. No measured step count passed both timing and task-quality gates.
+I also ran the TensorRT U-Net inside the DDPM scheduler on physical Orin using synthetic, fixed-shape tensors. The 100-step loop measured **557.81/568.67 ms P50/P95** and missed all 20 local 50 ms targets. Six steps reached **32.43/36.28 ms** with 0/20 misses, but the matching Push-T evaluation had 0% high-quality completion. None of the tested step counts met both the timing and task-quality requirements.
 
-## Evidence
+## Source results
 
-- Quality: [`../evidence/edge-quality.json`](../evidence/edge-quality.json)
-- Critical rerun: [`../evidence/independent-rerun.json`](../evidence/independent-rerun.json)
-- Fixed-node comparison: [`../evidence/edge-fixed-node.json`](../evidence/edge-fixed-node.json)
-- Orin correctness: [`../evidence/edge-orin-correctness.json`](../evidence/edge-orin-correctness.json)
-- Orin timing: [`../evidence/edge-orin.json`](../evidence/edge-orin.json)
-- Orin complete denoising loop: [`../evidence/edge-orin-denoising-steps.json`](../evidence/edge-orin-denoising-steps.json)
-- Step-count quality sweep: [`../evidence/edge-step-quality.json`](../evidence/edge-step-quality.json)
+- [Push-T quality](../evidence/edge-quality.json)
+- [Independent rerun](../evidence/independent-rerun.json)
+- [RTX 4090 backend comparison](../evidence/edge-fixed-node.json)
+- [Orin correctness](../evidence/edge-orin-correctness.json)
+- [Single U-Net timing on Orin](../evidence/edge-orin.json)
+- [Complete denoising loop on Orin](../evidence/edge-orin-denoising-steps.json)
+- [Denoising-step quality comparison](../evidence/edge-step-quality.json)
 
-## Limitations
+## What the results do not show
 
-The 3.37/4.41 ms Orin number covers one U-Net invocation; the separate scheduler-plus-U-Net table covers the denoising loop but still excludes observation and robot I/O. The step-count quality sweep used simulator observations and is not a physical-robot result. The rented board exposes no confirmed total-module rail, so energy/action is intentionally not reported. The 20 Hz control result is an offline timing replay, not a physical-robot success claim.
+The **3.37/4.41 ms** result is for one U-Net invocation, not the full controller. The scheduler-plus-U-Net measurement still excludes observation processing, sensors, actuators, networking, and robot safety logic. Push-T quality was measured in simulation, not on a physical robot. I also do not report energy per action because the available telemetry did not provide a confirmed, non-overlapping total-module power rail.
