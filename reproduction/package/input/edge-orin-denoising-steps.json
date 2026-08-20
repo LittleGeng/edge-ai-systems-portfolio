@@ -1,0 +1,93 @@
+{
+  "captured_at": "2026-08-06T17:27:08+00:00",
+  "deadline_ms": 50.0,
+  "engine_sha256": "770a439e18d20d43a48215d8305d88fc74be162c193ca0fa98efd2eac4400e60",
+  "input_seed": 20260807,
+  "measured_iterations_per_step_count": 20,
+  "results": [
+    {
+      "deadline_misses": 20,
+      "deadline_ms": 50.0,
+      "iterations": 20,
+      "p50_ms": 557.8093604999594,
+      "p95_ms": 568.673770641908,
+      "step_count": 100,
+      "throughput_hz": 1.8055961567169339
+    },
+    {
+      "deadline_misses": 20,
+      "deadline_ms": 50.0,
+      "iterations": 20,
+      "p50_ms": 110.80292399856262,
+      "p95_ms": 121.95665194303729,
+      "step_count": 20,
+      "throughput_hz": 8.884336767831158
+    },
+    {
+      "deadline_misses": 20,
+      "deadline_ms": 50.0,
+      "iterations": 20,
+      "p50_ms": 54.883561984752305,
+      "p95_ms": 64.14736839506078,
+      "step_count": 10,
+      "throughput_hz": 17.74382968464687
+    },
+    {
+      "deadline_misses": 1,
+      "deadline_ms": 50.0,
+      "iterations": 20,
+      "p50_ms": 43.678770496626385,
+      "p95_ms": 50.00561336346436,
+      "step_count": 8,
+      "throughput_hz": 22.146055269663442
+    },
+    {
+      "deadline_misses": 0,
+      "deadline_ms": 50.0,
+      "iterations": 20,
+      "p50_ms": 32.427373982500285,
+      "p95_ms": 36.284628708381206,
+      "step_count": 6,
+      "throughput_hz": 30.125320852869876
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Synthetic fixed-shape TensorRT U-Net plus frozen DDPM scheduler; no observation, simulator or robot I/O.",
+  "step_counts": [
+    100,
+    20,
+    10,
+    8,
+    6
+  ],
+  "task_id": "ORIN-EDGE-DENOISING-STEPS",
+  "telemetry": {
+    "energy_valid": false,
+    "gpu_utilization_mean_pct": 66.5503355704698,
+    "power_mean_w": null,
+    "power_p95_w": null,
+    "rail_summaries": {
+      "VDD_CPU_CV": {
+        "mean_w": 0.9342348993288591,
+        "p95_w": 1.587,
+        "samples": 149
+      },
+      "VDD_GPU_SOC": {
+        "mean_w": 5.165664429530201,
+        "p95_w": 5.162,
+        "samples": 149
+      },
+      "VIN_SYS_5V0": {
+        "mean_w": 5.940221476510067,
+        "p95_w": 5.947,
+        "samples": 149
+      }
+    },
+    "ram_peak_mb": 7096,
+    "samples": 151,
+    "selected_total_power_rail": null
+  },
+  "tensorrt": "10.11.0.33",
+  "torch": "2.8.0a0+5228986c39.nv25.06",
+  "warmup_iterations": 3
+}
