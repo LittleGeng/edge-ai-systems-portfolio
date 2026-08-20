@@ -1,33 +1,35 @@
 # Edge AI systems portfolio
 
-An evidence-linked systems study spanning official robot-learning baselines, RTX 4090 optimization, and deployment measurements on Jetson AGX Orin. The repository is organized for a technical interview: claims lead to evidence, limitations are explicit, and the frozen aggregation path runs offline.
+This project explores a practical question: how far can two robot-learning policies be optimized on an RTX 4090 and then moved to Jetson AGX Orin without losing task quality? It covers official simulator evaluation, GPU profiling and optimization, deployment on a physical Orin board, and reproducible result checks.
 
-Read the [complete Chinese technical report](technical-report-zh.md) or the [English technical report](technical-report.md) for the protocol, measured results, scope boundaries, failure analysis and reproduction instructions.
+For the full methodology and results, see the [Chinese technical report](technical-report-zh.md) or the [English technical report](technical-report.md).
 
 ![Latency comparison](figures/latency-comparison.svg)
 
 ## Results at a glance
 
-| Project | Task result | Systems result | Engineering decision |
+| Project | Task result | Systems result | What I concluded |
 |---|---|---|---|
-| [EdgeDiffusion](projects/edge-diffusion.md) | 95% high-quality completion over 60 Push-T episodes | 2.40x RTX 4090 speedup; Orin U-Net 3.37/4.41 ms; complete loop 557.8 ms at 100 steps and 32.4 ms at 6 | No step count passes both Orin timing and paired Push-T quality gates |
-| [SmolVLA edge study](projects/smolvla-edge.md) | 13.3% main / 18.1% secondary-condition success | Orin steady chunk 1191.74 ms, 0.837 Hz, 500/500 misses at 30 Hz | Reject direct 30 Hz control on the measured PyTorch path |
+| [EdgeDiffusion](projects/edge-diffusion.md) | 95% high-quality completion over 60 Push-T episodes | 2.40x speedup on one RTX 4090; Orin U-Net 3.37/4.41 ms; complete loop 557.8 ms at 100 steps and 32.4 ms at 6 steps | None of the tested step counts met both the Orin timing target and the Push-T quality requirement |
+| [SmolVLA edge study](projects/smolvla-edge.md) | 13.3% success on the main condition and 18.1% on the secondary condition | Orin steady chunk 1191.74 ms, 0.837 Hz, and 500/500 misses at 30 Hz | The measured PyTorch path is not suitable for direct 30 Hz control |
 
-The supplemental Orin runtime study measured `torch.compile(reduce-overhead)` at 1005.55 ms first-action P50, a 21.9% reduction versus eager. The paired cloud LIBERO screen measured 20.0% eager versus 22.0% compile, a +2.0% paired delta. Its point estimate passes the +/-5 percentage-point rule, but CI [-10.0%, +14.0%] does not establish statistical non-inferiority. The direct 30 Hz deployment claim remains rejected. Full scope and hashes are in [the strengthening evidence](evidence/orin-smolvla-strengthening.json) and [the paired quality evidence](evidence/smolvla-quality-gate.json).
+For SmolVLA, `torch.compile(reduce-overhead)` reduced first-action P50 by 21.9%, from 1287.54 ms to 1005.55 ms, on fixed synthetic input. A paired 50-episode LIBERO comparison measured 20.0% success with eager execution and 22.0% with compile. The +2.0 percentage-point difference is within the preset +/-5-point screening range, but the 95% confidence interval of [-10.0%, +14.0%] is too wide to establish non-inferiority. The implementation also remains far from 30 Hz.
 
-The original dataset evidence is now reconciled: three August 4 audits agree on **377/377 parquet shard hashes**, 432 selected episodes and 52,970 frames. Stage profiling attributes **60.6%** of full Orin inference to denoise VLM forward and **27.0%** to prefix embedding. A physical-Orin scheduler replay increased fresh-action ticks from **68.7%** to **86.7%** when the refill threshold rose, but stale ticks reached **201/300**. See the [dataset audit](evidence/smolvla-dataset-audit.json), [stage profile](evidence/orin-smolvla-strengthening.json), and [scheduler evidence](evidence/orin-smolvla-chunk-scheduler-08.json).
+Stage profiling showed where the time goes: denoise VLM forward accounts for **60.6%** of full Orin inference and prefix embedding for **27.0%**. Raising the scheduler refill threshold increased fresh-action ticks from **68.7%** to **86.7%**, but stale ticks also rose to **201/300**. These results point to kernel or export-level work on the two dominant stages rather than further scheduler tuning alone.
 
-Two additional quality gates retained negative decisions. In the Push-T step sweep, only 100 steps passed; 20/10/8/6 steps reduced controller P50 but each produced 0% high-quality completion and was rejected. In paired LIBERO runs with an injected Orin latency envelope, async success regressed by 16%/36% at thresholds 0.5/0.8. These are simulator gates, not physical-robot results. See [step-count evidence](evidence/edge-step-quality.json) and [latency-envelope evidence](evidence/smolvla-orin-latency-envelope.json).
+Several apparently promising shortcuts did not hold up under task evaluation:
 
-The frozen SmolVLA visual resize gate is also negative: 512x512 eager achieved 20.0%, while direct 256x256 downsampling achieved 0.0% on the same 50 episode IDs (delta -20.0%); the +/-5 percentage-point gate rejected it. See [resize evidence](evidence/smolvla-resize-quality-gate.json).
+- Reducing EdgeDiffusion from 100 denoising steps to 20, 10, 8, or 6 made inference faster, but every shorter setting produced 0% high-quality completion in its paired Push-T run.
+- Injecting the measured Orin latency range into paired LIBERO runs reduced asynchronous success by 16 and 36 percentage points at refill thresholds 0.5 and 0.8.
+- Directly resizing SmolVLA input from 512x512 to 256x256 reduced success from 20.0% to 0.0% on the same 50 episodes.
+- A 6000-step, 384x384 LoRA follow-up recovered only 10.0% success, below the preset 15% level for expanding to three seeds and 20k steps.
+- Targeted TorchAO INT8 kept action differences within the chosen limits but increased first-action P50 from 1202.12 ms to 1415.67 ms for weight-only and 5450.43 ms for dynamic quantization.
 
-A bounded recovery experiment then fine-tuned a 384x384 rank-32 LoRA candidate for 6000 steps. It reached 10.0% versus 20.0% eager on the same 50 paired episode IDs, below the frozen 15% minimum, so the planned three-seed/20k expansion was stopped. See [384px recovery evidence](evidence/smolvla-resize384-finetune-quality-gate.json).
+These are simulator and synthetic-input results. They do not demonstrate physical-robot task success. The detailed conditions and source files are linked from the [evidence map](docs/evidence-map.md).
 
-On physical Orin, targeted TorchAO INT8 weight-only/dynamic candidates both passed action-difference limits but regressed first-action P50 from 1202.12 ms eager to 1415.67/5450.43 ms. Both were rejected; this is a synthetic-input runtime result, not a robot-success claim. See [targeted INT8 evidence](evidence/orin-smolvla-quantization.json).
+The original dataset records were also cross-checked: three August 4 records agree on **377/377 parquet shard hashes**, 432 selected episodes, and 52,970 frames. Experiments ended by **2026-08-07**. Work on August 8-9 only copied, inventoried, and hash-checked existing files; it did not add new experimental results.
 
-Experiment execution ended by **2026-08-07**. August 8-9 were synchronization, inventory and `verify-only` hash verification only; no new experiments were executed.
-
-## Static evidence overviews
+## Visual summaries
 
 ![EdgeDiffusion evidence overview](demos/edge-diffusion-evidence-overview.png)
 
@@ -35,23 +37,23 @@ Experiment execution ended by **2026-08-07**. August 8-9 were synchronization, i
 
 ```mermaid
 flowchart LR
-    A["Pinned upstream code and checkpoints"] --> B["Cloud quality and profiling"]
-    B --> C["Fixed-node optimization gates"]
-    C --> D["Jetson AGX Orin deployment"]
-    D --> E["Independent rerun and claim audit"]
-    E --> F["Results, overviews, and reproducibility evidence"]
+    A["Pin code, checkpoints, and evaluation settings"] --> B["Evaluate task quality and profile runtime"]
+    B --> C["Compare optimization options on a fixed GPU"]
+    C --> D["Deploy and measure on Jetson AGX Orin"]
+    D --> E["Repeat key runs and check limitations"]
+    E --> F["Publish results and reproduction files"]
 ```
 
-## Review path
+## Suggested reading order
 
-1. Read the two project summaries: [EdgeDiffusion](projects/edge-diffusion.md) and [SmolVLA](projects/smolvla-edge.md).
-2. Inspect the [claim-to-evidence map](docs/evidence-map.md) and [failure analysis](docs/failure-analysis.md).
-3. Open the two static evidence overviews: [EdgeDiffusion](demos/edge-diffusion-evidence-overview.png) and [SmolVLA](demos/smolvla-edge-evidence-overview.png).
-4. Run the frozen, networkless aggregation check described in [reproduction/README.md](reproduction/README.md).
+1. Read the [EdgeDiffusion](projects/edge-diffusion.md) and [SmolVLA](projects/smolvla-edge.md) summaries.
+2. Use the [evidence map](docs/evidence-map.md) to trace any number to its source file.
+3. Read the [experiments that did not work](docs/failure-analysis.md) for the engineering tradeoffs.
+4. Follow [the offline reproduction instructions](reproduction/README.md) to recalculate the published summary from the included evidence.
 
-## Reproduce the published numbers
+## Check the published numbers
 
-This verifies frozen evidence aggregation and acceptance gates; it does not rerun model inference.
+The following commands recalculate the summary and verify the included files. They do not rerun model inference.
 
 ```bash
 cd reproduction/package
@@ -60,4 +62,4 @@ docker run --rm --network=none --read-only --cap-drop=ALL \
   --security-opt=no-new-privileges edge-ai-portfolio-repro
 ```
 
-The source repositories, revisions, checkpoint hashes, scopes, and known gaps are recorded in [provenance](reproduction/package/provenance.json). No model weights, credentials, cloud endpoints, billing data, or private machine paths are published here.
+Repository revisions, checkpoint hashes, experimental scope, and known limitations are listed in [provenance.json](reproduction/package/provenance.json). The public repository does not contain model weights, credentials, cloud endpoints, billing data, or private machine paths.
