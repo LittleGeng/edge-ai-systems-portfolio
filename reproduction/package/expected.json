@@ -8,9 +8,25 @@
       "absolute_tolerance": 1e-12,
       "value": 0.95
     },
+    "edge_lower_step_quality_gates_passed": {
+      "absolute_tolerance": 0,
+      "value": 0
+    },
     "edge_orin_deadline_misses": {
       "absolute_tolerance": 0,
       "value": 0
+    },
+    "edge_orin_loop_100_p50_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 557.8093604999594
+    },
+    "edge_orin_loop_6_deadline_misses": {
+      "absolute_tolerance": 0,
+      "value": 0
+    },
+    "edge_orin_loop_6_p50_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 32.427373982500285
     },
     "edge_orin_p50_ms": {
       "absolute_tolerance": 1e-12,
@@ -20,6 +36,50 @@
       "absolute_tolerance": 1e-12,
       "value": 4.4148895583930425
     },
+    "edge_step_100_completion_rate": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.9
+    },
+    "edge_step_6_controller_p50_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 65.24052750319242
+    },
+    "smolvla_chunk_05_fresh_action_rate": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.6866666666666666
+    },
+    "smolvla_chunk_08_fresh_action_rate": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.8666666666666667
+    },
+    "smolvla_chunk_08_stale_ticks": {
+      "absolute_tolerance": 0,
+      "value": 201
+    },
+    "smolvla_dataset_original_audit_passed": {
+      "absolute_tolerance": 0,
+      "value": 1
+    },
+    "smolvla_dataset_shard_hash_count": {
+      "absolute_tolerance": 0,
+      "value": 377
+    },
+    "smolvla_latency_envelope_05_async_success": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.08
+    },
+    "smolvla_latency_envelope_05_fallback": {
+      "absolute_tolerance": 0,
+      "value": 3618
+    },
+    "smolvla_latency_envelope_08_async_success": {
+      "absolute_tolerance": 1e-12,
+      "value": 0.04
+    },
+    "smolvla_latency_envelope_08_fallback": {
+      "absolute_tolerance": 0,
+      "value": 4028
+    },
     "smolvla_orin_control_rate_hz": {
       "absolute_tolerance": 1e-12,
       "value": 0.836850504570623
@@ -28,9 +88,41 @@
       "absolute_tolerance": 0,
       "value": 500
     },
+    "smolvla_orin_int8_dynamic_p50_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 5450.431158998981
+    },
+    "smolvla_orin_int8_weight_only_p50_ms": {
+      "absolute_tolerance": 1e-12,
+      "value": 1415.665179520147
+    },
     "smolvla_replay_fresh_action_rate": {
       "absolute_tolerance": 1e-12,
       "value": 0.02666666666666667
+    },
+    "smolvla_resize256_success_delta": {
+      "absolute_tolerance": 1e-12,
+      "value": -0.2
+    },
+    "smolvla_resize256_success_rate": {
+      "absolute_tolerance": 0,
+      "value": 0.0
+    },
+    "smolvla_resize384_finetune_success_delta": {
+      "absolute_tolerance": 1e-12,
+      "value": -0.1
+    },
+    "smolvla_resize384_finetune_success_rate": {
+      "absolute_tolerance": 0,
+      "value": 0.1
+    },
+    "smolvla_stage_denoise_vlm_share_pct": {
+      "absolute_tolerance": 1e-12,
+      "value": 60.59765926434163
+    },
+    "smolvla_stage_prefix_embedding_share_pct": {
+      "absolute_tolerance": 1e-12,
+      "value": 27.043917520794555
     }
   },
   "schema_version": 1

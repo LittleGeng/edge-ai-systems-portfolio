@@ -5,31 +5,106 @@
       "bytes": 2270,
       "package_path": "input/edge-quality.json",
       "sha256": "91edd001f2d98ebbba6dd950aa9cd4dddde3e3ee00d9e7da45fcb4abeede1a5b",
-      "source_path": "data/runs/edge-pusht-final-evaluation-v1/summary.json"
+      "source_path": "data/runs/edge-pusht-final-evaluation-v1/summary.json",
+      "source_sha256": "91edd001f2d98ebbba6dd950aa9cd4dddde3e3ee00d9e7da45fcb4abeede1a5b"
     },
     {
       "bytes": 4573,
       "package_path": "input/edge-fixed-node.json",
       "sha256": "1a2d795f8b1264df8c5a34c57b8d4b46bd36bc5a6c1c5f653b15889566bd1113",
-      "source_path": "data/runs/sys-05-fixed-node-v1/summary.json"
+      "source_path": "data/runs/sys-05-fixed-node-v1/summary.json",
+      "source_sha256": "1a2d795f8b1264df8c5a34c57b8d4b46bd36bc5a6c1c5f653b15889566bd1113"
     },
     {
       "bytes": 1253,
       "package_path": "input/edge-orin.json",
       "sha256": "b9ef4d69ea735414977406ff13ce176e0dad3534ff192153235f69bc276ff9d4",
-      "source_path": "evidence/orin/20260805-l4t3650/evidence/orin-03-edge-benchmark/benchmark.json"
+      "source_path": "evidence/orin/20260805-l4t3650/evidence/orin-03-edge-benchmark/benchmark.json",
+      "source_sha256": "b9ef4d69ea735414977406ff13ce176e0dad3534ff192153235f69bc276ff9d4"
     },
     {
       "bytes": 1565,
       "package_path": "input/smolvla-orin.json",
       "sha256": "4397999766fa8cbdf66b7aac21d88306d48b9c52ee65af40681fadb6d5f9018f",
-      "source_path": "evidence/orin/20260805-l4t3650/evidence/orin-04-05-smolvla-benchmark/benchmark.json"
+      "source_path": "evidence/orin/20260805-l4t3650/evidence/orin-04-05-smolvla-benchmark/benchmark.json",
+      "source_sha256": "4397999766fa8cbdf66b7aac21d88306d48b9c52ee65af40681fadb6d5f9018f"
     },
     {
       "bytes": 1769,
       "package_path": "input/control-replay.json",
       "sha256": "efeafe3fee7c11a8f4b830e72e74a05b043b1e7c636cfd96642445caa99184ea",
-      "source_path": "data/runs/orin-06-simulated-loop-v1/summary.json"
+      "source_path": "data/runs/orin-06-simulated-loop-v1/summary.json",
+      "source_sha256": "efeafe3fee7c11a8f4b830e72e74a05b043b1e7c636cfd96642445caa99184ea"
+    },
+    {
+      "bytes": 10669,
+      "package_path": "input/edge-step-quality.json",
+      "sha256": "8a522621fd8b89a51c4060c0c9e17d193e849d93b71aa563afd691d5c091da5d",
+      "source_path": "data/runs/edgediffusion-step-quality-v1/summary.json",
+      "source_sha256": "84755670b901df105820307c5bb09c1b5c80daaf27ac753e1fa3a1caa29b3a3e"
+    },
+    {
+      "bytes": 9484,
+      "package_path": "input/smolvla-latency-envelope.json",
+      "sha256": "7984bfd999afa49095491ba3a37601c4456ea2c5b9bcc9fda0859d82d413f5fe",
+      "source_path": "data/runs/smolvla-orin-trace-quality-v1/summary.json",
+      "source_sha256": "ae2e1e2140a2ccc0086118c5c01f86f1ca7c831a6473dc4c06317986ed298aad"
+    },
+    {
+      "bytes": 1718,
+      "package_path": "input/smolvla-resize-quality-gate.json",
+      "sha256": "2c68f0bd14e3be1ec4616916eae0e42a4b6c9e10fc76e7861f6c94a732f3911f",
+      "source_path": "data/runs/smolvla-resize-quality-gate-50-v1/summary.json",
+      "source_sha256": "2c68f0bd14e3be1ec4616916eae0e42a4b6c9e10fc76e7861f6c94a732f3911f"
+    },
+    {
+      "bytes": 1914,
+      "package_path": "input/smolvla-resize384-finetune-quality-gate.json",
+      "sha256": "ea050e21f20f3f08fe85ffa1c7ab6d38f134e295ed3d3246951b5cf076ebeebe",
+      "source_path": "data/runs/smolvla-resize384-finetune-quality-gate-50-v1/summary.json",
+      "source_sha256": "ea050e21f20f3f08fe85ffa1c7ab6d38f134e295ed3d3246951b5cf076ebeebe"
+    },
+    {
+      "bytes": 12636,
+      "package_path": "input/orin-smolvla-quantization.json",
+      "sha256": "c771cb0ee1aca74ad5f361aae8a814debe7bbf66ace8bc68aceabd414eaab9aa",
+      "source_path": "data/runs/orin-smolvla-quantization-v1/summary.json",
+      "source_sha256": "c771cb0ee1aca74ad5f361aae8a814debe7bbf66ace8bc68aceabd414eaab9aa"
+    },
+    {
+      "bytes": 46351,
+      "package_path": "input/smolvla-dataset-audit.json",
+      "sha256": "e339886bca15920aa559d434cbcfda680a13a1d55558db8c7265127d3d9ccf66",
+      "source_path": "data/runs/vla-01-recovered-audit-v1/audit.json",
+      "source_sha256": "e339886bca15920aa559d434cbcfda680a13a1d55558db8c7265127d3d9ccf66"
+    },
+    {
+      "bytes": 2345,
+      "package_path": "input/edge-orin-denoising-steps.json",
+      "sha256": "c60471db1b5b3b18f05fc984071609601cb78ded5aac8582ee53bd2669713bee",
+      "source_path": "evidence/orin/20260807-supplemental/edge-denoising-steps/benchmark.json",
+      "source_sha256": "c60471db1b5b3b18f05fc984071609601cb78ded5aac8582ee53bd2669713bee"
+    },
+    {
+      "bytes": 12235,
+      "package_path": "input/orin-smolvla-strengthening.json",
+      "sha256": "1715a7a3ad807564f1134bce1c8c56a8d6c287d44edf6846055d037cf1c9a783",
+      "source_path": "evidence/orin/20260806-strengthening/summary.json",
+      "source_sha256": "3c2abc6c82e91fa025e77ee50874209fa6dacec06b6835996426b0961b89f888"
+    },
+    {
+      "bytes": 1495,
+      "package_path": "input/orin-chunk-scheduler-05.json",
+      "sha256": "ec06e70d8ae22341a5e193d8181d1175e16233e1780d58e9aefb60df6640cd37",
+      "source_path": "evidence/orin/20260807-supplemental/chunk-scheduler-threshold05/benchmark.json",
+      "source_sha256": "ec06e70d8ae22341a5e193d8181d1175e16233e1780d58e9aefb60df6640cd37"
+    },
+    {
+      "bytes": 1513,
+      "package_path": "input/orin-chunk-scheduler-08.json",
+      "sha256": "2c7d7e9d5e59c53812f5561b2c041613f9a04b0fd5219b27fc1b7ccba09f8c24",
+      "source_path": "evidence/orin/20260807-supplemental/chunk-scheduler-threshold08/benchmark.json",
+      "source_sha256": "2c7d7e9d5e59c53812f5561b2c041613f9a04b0fd5219b27fc1b7ccba09f8c24"
     }
   ],
   "network_required_at_runtime": false,
