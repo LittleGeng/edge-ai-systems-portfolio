@@ -1,5 +1,5 @@
-# Isolated minimum reproduction
+# Self-contained result check
 
-Run `docker build --network=none --pull=false -t ggsjob-release-repro .` and then `docker run --rm --network=none --read-only --cap-drop=ALL --security-opt=no-new-privileges ggsjob-release-repro`.
+Run `docker build --network=none --pull=false -t ggsjob-release-repro .`, followed by `docker run --rm --network=none --read-only --cap-drop=ALL --security-opt=no-new-privileges ggsjob-release-repro`.
 
-The package reproduces frozen aggregation and acceptance gates. It does not claim to rerun model inference.
+The package recalculates the published summary from the included result files. It does not rerun model inference.
