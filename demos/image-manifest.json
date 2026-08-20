@@ -1,0 +1,22 @@
+{
+  "classification": "static_evidence_overview",
+  "images": [
+    {
+      "bytes": 126795,
+      "height": 1000,
+      "path": "edge-diffusion-evidence-overview.png",
+      "sha256": "45d29a6e58f2cec9ad78990cb1dfb94ef256f5a85b666198599e928e6457d6b1",
+      "width": 1600
+    },
+    {
+      "bytes": 122361,
+      "height": 1000,
+      "path": "smolvla-edge-evidence-overview.png",
+      "sha256": "c43ec60ba77b511de8f06bb88cbd2f09513c87bda64b9efdf1247bb03e029ac1",
+      "width": 1600
+    }
+  ],
+  "physical_robot_demo": false,
+  "schema_version": 1,
+  "scope_note": "These images summarize frozen evidence. They do not replace raw traces and do not claim live robot execution."
+}
