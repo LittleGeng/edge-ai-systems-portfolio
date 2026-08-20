@@ -1,0 +1,238 @@
+{
+  "comparison": {
+    "threshold_0.5": {
+      "async_success_rate": 0.08,
+      "fallback_total": 3618,
+      "fresh_action_tick_rate": 0.4505694760820046,
+      "queue_empty_total": 3618,
+      "success_rate_abs_delta": 0.15999999999999998,
+      "sync_success_rate": 0.24
+    },
+    "threshold_0.8": {
+      "async_success_rate": 0.04,
+      "fallback_total": 4028,
+      "fresh_action_tick_rate": 0.4063375092114959,
+      "queue_empty_total": 4028,
+      "success_rate_abs_delta": 0.36000000000000004,
+      "sync_success_rate": 0.4
+    }
+  },
+  "interpretation": "This is a negative simulator quality gate under an Orin latency envelope. The latency envelope uses p50/p95 summary endpoints because the physical Orin benchmark did not emit raw per-chunk inference timestamps.",
+  "quality_gate": {
+    "all_thresholds_passed": false,
+    "success_rate_abs_delta_limit": 0.05
+  },
+  "schema_version": 1,
+  "scope": "Paired LIBERO simulation with physical-Orin latency envelope injection; no physical-robot task claim.",
+  "task_id": "SUP-VLA-ORIN-TRACE",
+  "thresholds": {
+    "0.5": {
+      "evidence_root": "evidence/cloud/B/smolvla-orin-trace-quality",
+      "evidence_sha256": {
+        "evidence/cloud/B/smolvla-orin-trace-quality/command.txt": "1db5a9661ebfce78b8dddd0522555e15af1b8f979a0b00f1f1418b4090dcd370",
+        "evidence/cloud/B/smolvla-orin-trace-quality/episodes.jsonl": "67e6569e10bedd3018dca56aeeaa6054f9f86da7e7d1a19b67a82fb424dd7e78",
+        "evidence/cloud/B/smolvla-orin-trace-quality/latency-injection.json": "7c4ff637e7ed974981dd45f348c8462a556e4549f25edbaee3cb340d59af7f26",
+        "evidence/cloud/B/smolvla-orin-trace-quality/summary.json": "49788c7fa4580e7787a68158ed21a4bc14975ce514145d0fdf8f30bcc687be65",
+        "evidence/cloud/B/smolvla-orin-trace-quality/trace.jsonl": "a9f35459c55cd05df0c5ad06a6601610141afad423351e21752708d26b8bf125"
+      },
+      "summary": {
+        "acceptance_gates": {
+          "fallback_and_underflow_recorded": true,
+          "inference_and_control_threads_decoupled": true,
+          "official_queue_primitive_used": true,
+          "physical_orin_latency_provenance_recorded": true,
+          "same_policy_for_sync_and_async": true,
+          "same_task_and_seeds": true
+        },
+        "aggregate": {
+          "async_chunks_published_total": 165,
+          "async_deadline_miss_total": 1296,
+          "async_fallback_total": 3618,
+          "async_first_action": {
+            "count": 25,
+            "max_ms": 1363.887985,
+            "mean_ms": 1327.52655016,
+            "p50_ms": 1326.523975,
+            "p95_ms": 1326.8760432
+          },
+          "async_fresh_action_tick_rate": 0.4505694760820046,
+          "async_queue_empty_total": 3618,
+          "async_stale_actions_discarded_total": 5275,
+          "async_success_rate": 0.08,
+          "success_rate_abs_delta": 0.15999999999999998,
+          "sync_deadline_miss_total": 4413,
+          "sync_first_action": {
+            "count": 25,
+            "max_ms": 882.334499,
+            "mean_ms": 345.67598535999997,
+            "p50_ms": 283.883913,
+            "p95_ms": 702.113355799999
+          },
+          "sync_success_rate": 0.24
+        },
+        "generated_at": "2026-08-07T02:14:48+08:00",
+        "lerobot_revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+        "node_id": "B",
+        "policy_path": "<runtime-path-redacted>",
+        "policy_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+        "protocol": {
+          "actions_per_chunk": 50,
+          "chunk_size_threshold": 0.5,
+          "deadline_ms": 33.333333333333336,
+          "episodes": 25,
+          "fallback": "repeat_last_action",
+          "fps": 30,
+          "latency_injection": {
+            "construction": "19 p50 samples plus one p95 sample per 20 requested chunks; preserves measured p50/p95 envelope, not a raw Orin trace.",
+            "p50_ms": 1325.5807064851979,
+            "p95_ms": 1327.4391221475526,
+            "samples": 20,
+            "source_evidence": "evidence/orin/20260807-supplemental/chunk-scheduler-threshold08/benchmark.json",
+            "trace_sha256": "0b99e49f852b20887e2e1ec16f3c0ddbee6bbd1a7861969a56cc6d2dd86debe5"
+          },
+          "paired_seeds": [
+            20260804,
+            20260805,
+            20260806,
+            20260807,
+            20260808,
+            20260809,
+            20260810,
+            20260811,
+            20260812,
+            20260813,
+            20260814,
+            20260815,
+            20260816,
+            20260817,
+            20260818,
+            20260819,
+            20260820,
+            20260821,
+            20260822,
+            20260823,
+            20260824,
+            20260825,
+            20260826,
+            20260827,
+            20260828
+          ],
+          "suite": "libero_spatial",
+          "task_id": 0
+        },
+        "quality_gate": {
+          "passed": false,
+          "success_rate_abs_delta_limit": 0.05
+        },
+        "run_id": "smolvla-orin-trace-B-t0.5",
+        "schema_version": 1,
+        "scope": "Paired LIBERO simulation quality and queue behavior with physical-Orin latency envelope injected; not physical-robot evidence.",
+        "task_id": "SUP-VLA-ORIN-TRACE"
+      }
+    },
+    "0.8": {
+      "evidence_root": "evidence/cloud/F/smolvla-orin-trace-quality",
+      "evidence_sha256": {
+        "evidence/cloud/F/smolvla-orin-trace-quality/command.txt": "f6d2a0418ff6e17e528e11e087de6292ec76f8e782b46cbab2b699230940611e",
+        "evidence/cloud/F/smolvla-orin-trace-quality/episodes.jsonl": "2591fcfff902bbe7c83c92ecf2f3275773f780619a760c7c660632c443535d10",
+        "evidence/cloud/F/smolvla-orin-trace-quality/latency-injection.json": "7c4ff637e7ed974981dd45f348c8462a556e4549f25edbaee3cb340d59af7f26",
+        "evidence/cloud/F/smolvla-orin-trace-quality/summary.json": "43605ddd00928f8c231bd39dc22c1708e5fc6c04ca2af67f9e431642b1d309d1",
+        "evidence/cloud/F/smolvla-orin-trace-quality/trace.jsonl": "afaef53dda17b333061f9123ffbe4e18b16f9510ef2071e56eb2e47536f01ae8"
+      },
+      "summary": {
+        "acceptance_gates": {
+          "fallback_and_underflow_recorded": true,
+          "inference_and_control_threads_decoupled": true,
+          "official_queue_primitive_used": true,
+          "physical_orin_latency_provenance_recorded": true,
+          "same_policy_for_sync_and_async": true,
+          "same_task_and_seeds": true
+        },
+        "aggregate": {
+          "async_chunks_published_total": 170,
+          "async_deadline_miss_total": 327,
+          "async_fallback_total": 4028,
+          "async_first_action": {
+            "count": 25,
+            "max_ms": 1363.843621,
+            "mean_ms": 1330.9314525599998,
+            "p50_ms": 1326.610487,
+            "p95_ms": 1363.8046926
+          },
+          "async_fresh_action_tick_rate": 0.4063375092114959,
+          "async_queue_empty_total": 4028,
+          "async_stale_actions_discarded_total": 5726,
+          "async_success_rate": 0.04,
+          "success_rate_abs_delta": 0.36000000000000004,
+          "sync_deadline_miss_total": 4265,
+          "sync_first_action": {
+            "count": 25,
+            "max_ms": 937.770382,
+            "mean_ms": 296.74072,
+            "p50_ms": 268.236729,
+            "p95_ms": 311.19742499999995
+          },
+          "sync_success_rate": 0.4
+        },
+        "generated_at": "2026-08-07T02:11:28+08:00",
+        "lerobot_revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+        "node_id": "F",
+        "policy_path": "<runtime-path-redacted>",
+        "policy_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+        "protocol": {
+          "actions_per_chunk": 50,
+          "chunk_size_threshold": 0.8,
+          "deadline_ms": 33.333333333333336,
+          "episodes": 25,
+          "fallback": "repeat_last_action",
+          "fps": 30,
+          "latency_injection": {
+            "construction": "19 p50 samples plus one p95 sample per 20 requested chunks; preserves measured p50/p95 envelope, not a raw Orin trace.",
+            "p50_ms": 1325.5807064851979,
+            "p95_ms": 1327.4391221475526,
+            "samples": 20,
+            "source_evidence": "evidence/orin/20260807-supplemental/chunk-scheduler-threshold08/benchmark.json",
+            "trace_sha256": "0b99e49f852b20887e2e1ec16f3c0ddbee6bbd1a7861969a56cc6d2dd86debe5"
+          },
+          "paired_seeds": [
+            20260804,
+            20260805,
+            20260806,
+            20260807,
+            20260808,
+            20260809,
+            20260810,
+            20260811,
+            20260812,
+            20260813,
+            20260814,
+            20260815,
+            20260816,
+            20260817,
+            20260818,
+            20260819,
+            20260820,
+            20260821,
+            20260822,
+            20260823,
+            20260824,
+            20260825,
+            20260826,
+            20260827,
+            20260828
+          ],
+          "suite": "libero_spatial",
+          "task_id": 0
+        },
+        "quality_gate": {
+          "passed": false,
+          "success_rate_abs_delta_limit": 0.05
+        },
+        "run_id": "smolvla-orin-trace-F-t0.8",
+        "schema_version": 1,
+        "scope": "Paired LIBERO simulation quality and queue behavior with physical-Orin latency envelope injected; not physical-robot evidence.",
+        "task_id": "SUP-VLA-ORIN-TRACE"
+      }
+    }
+  }
+}

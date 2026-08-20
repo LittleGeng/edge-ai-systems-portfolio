@@ -1,0 +1,67 @@
+{
+  "artifacts": {
+    "baseline_episodes": "data/runs/smolvla-compile-quality-gate-50-v1/eager/episodes.jsonl",
+    "candidate_episodes": "data/runs/smolvla-resize-quality-gate-50-v1/candidate-resize256/episodes.jsonl"
+  },
+  "baseline": {
+    "episodes": 50,
+    "episodes_sha256": "bae5e9b7e92075d102cf9980942730c2daed92d9258a9d6e412263e6a9e31398",
+    "success_rate": 0.2,
+    "successes": 10,
+    "variant": "eager-512"
+  },
+  "candidate": {
+    "episodes": 50,
+    "episodes_sha256": "e77552ecddeef8086bdd390cc60c3d3cab46539a21d5dc4b1d91ca33454d2e07",
+    "success_rate": 0.0,
+    "successes": 0,
+    "variant": "resize256"
+  },
+  "paired_analysis": {
+    "bootstrap_95_ci": [
+      -0.32,
+      -0.1
+    ],
+    "both_failures": 40,
+    "both_successes": 0,
+    "eager_only_successes": 10,
+    "resize256_only_successes": 0,
+    "success_rate_delta_resize256_minus_eager": -0.2
+  },
+  "protocol": {
+    "episodes_per_task": 5,
+    "resize_candidate": [
+      256,
+      256
+    ],
+    "resize_source": [
+      512,
+      512
+    ],
+    "same_episode_ids": true,
+    "same_policy": true,
+    "start_seed": 20260806,
+    "suite": "libero_spatial",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "total_paired_episodes": 50
+  },
+  "quality_gate": {
+    "criterion": "absolute resize256-minus-eager success-rate delta <= 5 percentage points",
+    "passed": false,
+    "threshold_abs_success_delta": 0.05
+  },
+  "schema_version": 1,
+  "scope": "Paired official LIBERO Spatial quality gate for the frozen seed-43 SmolVLA; resize_imgs_with_padding changed from 512x512 to 256x256; 50 episodes per variant.",
+  "task_id": "SUP-VLA-RESIZE-QUALITY"
+}

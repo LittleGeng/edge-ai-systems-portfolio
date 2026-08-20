@@ -1,0 +1,48 @@
+{
+  "base_model_revision": "c83c3163b8ca9b7e67c509fffd9121e66cb96205",
+  "captured_at": "2026-08-06T17:30:45+00:00",
+  "chunk_latency_p50_ms": 1302.4800499842968,
+  "chunk_latency_p95_ms": 1354.7780286055058,
+  "chunk_size": 50,
+  "chunks_published": 5,
+  "fallback_ticks": 94,
+  "fps": 30,
+  "fresh_action_tick_rate": 0.6866666666666666,
+  "inference_pending_ticks": 198,
+  "lerobot_revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+  "policy_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+  "queue_underflow_ticks": 94,
+  "refill_threshold": 0.5,
+  "schema_version": 1,
+  "scope": "Synthetic-input action-chunk scheduler replay on physical Orin; no simulator or physical-robot task success.",
+  "stale_ticks": 100,
+  "task_id": "ORIN-VLA-ACTION-CHUNK-SCHEDULER",
+  "telemetry": {
+    "energy_valid": false,
+    "gpu_utilization_mean_pct": 43.38709677419355,
+    "power_mean_w": null,
+    "power_p95_w": null,
+    "rail_summaries": {
+      "VDD_CPU_CV": {
+        "mean_w": 0.7673870967741936,
+        "p95_w": 1.19,
+        "samples": 93
+      },
+      "VDD_GPU_SOC": {
+        "mean_w": 3.8409139784946236,
+        "p95_w": 5.16,
+        "samples": 93
+      },
+      "VIN_SYS_5V0": {
+        "mean_w": 4.984430107526881,
+        "p95_w": 5.443,
+        "samples": 93
+      }
+    },
+    "ram_peak_mb": 8009,
+    "samples": 95,
+    "selected_total_power_rail": null
+  },
+  "ticks": 300,
+  "vlm_metadata_revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467"
+}

@@ -1,0 +1,60 @@
+{
+  "artifacts": {
+    "baseline_episodes": "<runtime-path-redacted>",
+    "compile_episodes": "<runtime-path-redacted>"
+  },
+  "baseline": {
+    "episodes": 50,
+    "episodes_sha256": "bae5e9b7e92075d102cf9980942730c2daed92d9258a9d6e412263e6a9e31398",
+    "success_rate": 0.2,
+    "successes": 10
+  },
+  "compile": {
+    "episodes": 50,
+    "episodes_sha256": "f5ecb6fdcbe1f020b079c37770b7c31186dffdfb6004e86ecc21366cf38e9ee7",
+    "success_rate": 0.22,
+    "successes": 11
+  },
+  "paired_analysis": {
+    "bootstrap_95_ci": [
+      -0.1,
+      0.14
+    ],
+    "both_failures": 35,
+    "both_successes": 6,
+    "compile_only_successes": 5,
+    "eager_only_successes": 4,
+    "success_rate_delta_compile_minus_eager": 0.02
+  },
+  "protocol": {
+    "chunk_size": 50,
+    "compile_backend": "inductor",
+    "compile_mode": "reduce-overhead",
+    "episodes_per_task": 5,
+    "n_action_steps": 50,
+    "same_episode_ids": true,
+    "same_policy": true,
+    "start_seed": 20260806,
+    "suite": "libero_spatial",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "total_paired_episodes": 50
+  },
+  "quality_gate": {
+    "criterion": "absolute compile-minus-eager success-rate delta <= 5 percentage points",
+    "passed": true,
+    "threshold_abs_success_delta": 0.05
+  },
+  "schema_version": 1,
+  "scope": "paired official LIBERO Spatial quality gate for frozen seed-43 SmolVLA; 50 episodes per variant"
+}

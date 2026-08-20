@@ -1,0 +1,238 @@
+{
+  "evidence": {
+    "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802": {
+      "evidence_sha256": {
+        "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802/steps-100/episodes.jsonl": "6dfbadc1e7af137ce40591d46edf6a422d4c6126a11fee4a559b55753bcd8159",
+        "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802/steps-100/summary.json": "bf93d88aa3f3f3b173c4f1965c2bd2954ede1d6c89dd652145907b45e533e44a",
+        "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802/steps-20/episodes.jsonl": "b20c1dd79ff5a7e48f399a0056bae5680314ce64d0a1890eeee5e557254caf0b",
+        "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802/steps-20/summary.json": "73843c202bc9d2b03a95a9454d6dd281224af84a7ce85bd67a79e0a3f298c97d",
+        "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802/summary.json": "fdd4934ec55ce55c82e1c7c4b7fc112dd1704b4fa76dda06928f3dc83ca21789"
+      },
+      "run_root": "evidence/cloud/A/edgediffusion-steps-quality/edge-steps-quality-A-20260807T080802"
+    },
+    "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801": {
+      "evidence_sha256": {
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801/steps-10/episodes.jsonl": "d19280bfcab369276c211b435c87d2a6d3eb2d66448a23c49326e10bb8c585b2",
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801/steps-10/summary.json": "46c2eb84d2bd55060b178f2051dd6ee56969f4505f3dbd11dfdad9cf75c059f8",
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801/steps-8/episodes.jsonl": "b1a4c409cc970d974763872b63af7988ea8996a3bfbd60037abc71a8b8f64b46",
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801/steps-8/summary.json": "47101289fb40a2c8968db17e38fc709b9c4d8a7b4fcf476f5cd08948adfd3f85",
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801/summary.json": "b8af316e274a63fa9fb2c78f8acf6209a1684f16fca5fec212c3632eac13b302"
+      },
+      "run_root": "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T080801"
+    },
+    "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T081340": {
+      "evidence_sha256": {
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T081340/steps-6/episodes.jsonl": "f9ec4daa433394cebee475b6ea4b5587ab87a188ea9f74ac83db389c8f3a5276",
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T081340/steps-6/summary.json": "20c2115c4c47ce7530c853c147e8342f207e3a638dc329a512f3fc709a3550ea",
+        "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T081340/summary.json": "5d8d506f9cbb2e3197e77ac9d39ac7c287a10b8baf295d0e16c0e0d2d197cf44"
+      },
+      "run_root": "evidence/cloud/C/edgediffusion-steps-quality/edge-steps-quality-C-20260807T081340"
+    }
+  },
+  "interpretation": "Step-count reduction is a candidate only when both mean task score and high-quality completion stay within the predeclared 5 percentage-point gate versus the same-node baseline.",
+  "quality_gate": {
+    "all_variants_passed": false,
+    "completion_rate_abs_delta_limit": 0.05,
+    "mean_score_abs_delta_limit": 0.05
+  },
+  "schema_version": 1,
+  "scope": "Official Push-T simulator quality sweep on the frozen Diffusion Policy checkpoint; 20 episodes per step count using each node's paired baseline seed window.",
+  "task_id": "SUP-EDGE-STEPS",
+  "variants": {
+    "10": {
+      "captured_at": "2026-08-07T08:09:47+08:00",
+      "checkpoint_sha256": "f804e16575e261fa0b7e981da3f67741fc8517817734320d550e43a4182bf876",
+      "controller_calls": 760,
+      "controller_latency_ms": {
+        "mean": 93.1118902186618,
+        "p50": 88.39210029691458,
+        "p95": 96.8116950243711
+      },
+      "cuda": "11.6",
+      "episode_seed_start": 4400040,
+      "episode_seed_stop_inclusive": 4400059,
+      "episodes": 20,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "high_quality_completion_rate": 0.0,
+      "inference_steps": 10,
+      "mean_episode_wall_seconds": 4.277341362088919,
+      "mean_task_score": 0.09331188264917636,
+      "median_task_score": 0.021760096341622938,
+      "node_id": "C",
+      "protocol_id": "edge-evaluation-protocol-v1",
+      "quality_gate": {
+        "completion_rate_abs_delta": 1.0,
+        "completion_rate_abs_delta_limit": 0.05,
+        "mean_score_abs_delta": 0.9003758637677994,
+        "mean_score_abs_delta_limit": 0.05,
+        "passed": false
+      },
+      "reference": {
+        "high_quality_completion_rate": 1.0,
+        "mean_task_score": 0.9936877464169758,
+        "path": "<runtime-path-redacted>"
+      },
+      "repository_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+      "run_id": "edge-steps-quality-C",
+      "schema_version": 1,
+      "task_id": "SUP-EDGE-STEPS",
+      "torch": "1.12.1"
+    },
+    "100": {
+      "captured_at": "2026-08-07T08:19:21+08:00",
+      "checkpoint_sha256": "f804e16575e261fa0b7e981da3f67741fc8517817734320d550e43a4182bf876",
+      "controller_calls": 588,
+      "controller_latency_ms": {
+        "mean": 1085.8298335952975,
+        "p50": 1076.4756677672267,
+        "p95": 1120.2843461185694
+      },
+      "cuda": "11.6",
+      "episode_seed_start": 4400000,
+      "episode_seed_stop_inclusive": 4400019,
+      "episodes": 20,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "high_quality_completion_rate": 0.9,
+      "inference_steps": 100,
+      "mean_episode_wall_seconds": 32.637058526463804,
+      "mean_task_score": 0.9220333165446147,
+      "median_task_score": 1.0,
+      "node_id": "A",
+      "protocol_id": "edge-evaluation-protocol-v1",
+      "quality_gate": {
+        "completion_rate_abs_delta": 0.0,
+        "completion_rate_abs_delta_limit": 0.05,
+        "mean_score_abs_delta": 0.0,
+        "mean_score_abs_delta_limit": 0.05,
+        "passed": true
+      },
+      "reference": {
+        "high_quality_completion_rate": 0.9,
+        "mean_task_score": 0.9220333165446147,
+        "path": "<runtime-path-redacted>"
+      },
+      "repository_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+      "run_id": "edge-steps-quality-A",
+      "schema_version": 1,
+      "task_id": "SUP-EDGE-STEPS",
+      "torch": "1.12.1"
+    },
+    "20": {
+      "captured_at": "2026-08-07T08:22:41+08:00",
+      "checkpoint_sha256": "f804e16575e261fa0b7e981da3f67741fc8517817734320d550e43a4182bf876",
+      "controller_calls": 760,
+      "controller_latency_ms": {
+        "mean": 220.17255543093933,
+        "p50": 217.60246809571981,
+        "p95": 236.2094552256167
+      },
+      "cuda": "11.6",
+      "episode_seed_start": 4400000,
+      "episode_seed_stop_inclusive": 4400019,
+      "episodes": 20,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "high_quality_completion_rate": 0.0,
+      "inference_steps": 20,
+      "mean_episode_wall_seconds": 9.215583138819785,
+      "mean_task_score": 0.11871572573875333,
+      "median_task_score": 0.050864156144751274,
+      "node_id": "A",
+      "protocol_id": "edge-evaluation-protocol-v1",
+      "quality_gate": {
+        "completion_rate_abs_delta": 0.9,
+        "completion_rate_abs_delta_limit": 0.05,
+        "mean_score_abs_delta": 0.8033175908058614,
+        "mean_score_abs_delta_limit": 0.05,
+        "passed": false
+      },
+      "reference": {
+        "high_quality_completion_rate": 0.9,
+        "mean_task_score": 0.9220333165446147,
+        "path": "<runtime-path-redacted>"
+      },
+      "repository_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+      "run_id": "edge-steps-quality-A",
+      "schema_version": 1,
+      "task_id": "SUP-EDGE-STEPS",
+      "torch": "1.12.1"
+    },
+    "6": {
+      "captured_at": "2026-08-07T08:15:06+08:00",
+      "checkpoint_sha256": "f804e16575e261fa0b7e981da3f67741fc8517817734320d550e43a4182bf876",
+      "controller_calls": 760,
+      "controller_latency_ms": {
+        "mean": 69.22266231604705,
+        "p50": 65.24052750319242,
+        "p95": 81.38289246708153
+      },
+      "cuda": "11.6",
+      "episode_seed_start": 4400040,
+      "episode_seed_stop_inclusive": 4400059,
+      "episodes": 20,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "high_quality_completion_rate": 0.0,
+      "inference_steps": 6,
+      "mean_episode_wall_seconds": 3.3085067494772376,
+      "mean_task_score": 0.10400668446293286,
+      "median_task_score": 0.0,
+      "node_id": "C",
+      "protocol_id": "edge-evaluation-protocol-v1",
+      "quality_gate": {
+        "completion_rate_abs_delta": 1.0,
+        "completion_rate_abs_delta_limit": 0.05,
+        "mean_score_abs_delta": 0.889681061954043,
+        "mean_score_abs_delta_limit": 0.05,
+        "passed": false
+      },
+      "reference": {
+        "high_quality_completion_rate": 1.0,
+        "mean_task_score": 0.9936877464169758,
+        "path": "<runtime-path-redacted>"
+      },
+      "repository_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+      "run_id": "edge-steps-quality-C",
+      "schema_version": 1,
+      "task_id": "SUP-EDGE-STEPS",
+      "torch": "1.12.1"
+    },
+    "8": {
+      "captured_at": "2026-08-07T08:11:19+08:00",
+      "checkpoint_sha256": "f804e16575e261fa0b7e981da3f67741fc8517817734320d550e43a4182bf876",
+      "controller_calls": 760,
+      "controller_latency_ms": {
+        "mean": 81.56641571978598,
+        "p50": 80.4067887365818,
+        "p95": 90.47641782090068
+      },
+      "cuda": "11.6",
+      "episode_seed_start": 4400040,
+      "episode_seed_stop_inclusive": 4400059,
+      "episodes": 20,
+      "gpu": "NVIDIA GeForce RTX 4090",
+      "high_quality_completion_rate": 0.0,
+      "inference_steps": 8,
+      "mean_episode_wall_seconds": 3.8463726665824653,
+      "mean_task_score": 0.06716885277083955,
+      "median_task_score": 0.0026780975068338903,
+      "node_id": "C",
+      "protocol_id": "edge-evaluation-protocol-v1",
+      "quality_gate": {
+        "completion_rate_abs_delta": 1.0,
+        "completion_rate_abs_delta_limit": 0.05,
+        "mean_score_abs_delta": 0.9265188936461363,
+        "mean_score_abs_delta_limit": 0.05,
+        "passed": false
+      },
+      "reference": {
+        "high_quality_completion_rate": 1.0,
+        "mean_task_score": 0.9936877464169758,
+        "path": "<runtime-path-redacted>"
+      },
+      "repository_revision": "5ba07ac6661db573af695b419a7947ecb704690f",
+      "run_id": "edge-steps-quality-C",
+      "schema_version": 1,
+      "task_id": "SUP-EDGE-STEPS",
+      "torch": "1.12.1"
+    }
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "comparisons": [
+    {
+      "action_max_abs_difference_vs_baseline": 0.0,
+      "action_mean_abs_difference_vs_baseline": 0.0,
+      "control_rate_hz": 0.7727987344398404,
+      "deadline_misses": 20,
+      "first_action_latency_reduction_pct": 0.0,
+      "first_action_p50_ms": 1287.54124151601,
+      "first_action_p95_ms": 1322.3524380024173,
+      "first_action_throughput_speedup": 1.0,
+      "measured_iterations": 20,
+      "ram_peak_mb": 7813,
+      "steady_chunk_p50_ms": 1287.6336135086603,
+      "steady_chunk_p95_ms": 1306.815585550794,
+      "variant": "baseline-fixed",
+      "variant_config": {
+        "amp": false,
+        "compile_mode": null,
+        "compile_model": false,
+        "resize_image": 512
+      }
+    },
+    {
+      "action_max_abs_difference_vs_baseline": 0.022488117218017578,
+      "action_mean_abs_difference_vs_baseline": 0.007430272176861763,
+      "control_rate_hz": 0.8042864917644978,
+      "deadline_misses": 20,
+      "first_action_latency_reduction_pct": 3.506662431264963,
+      "first_action_p50_ms": 1242.3915165127255,
+      "first_action_p95_ms": 1274.3630404933356,
+      "first_action_throughput_speedup": 1.0363409797983936,
+      "measured_iterations": 20,
+      "ram_peak_mb": 7785,
+      "steady_chunk_p50_ms": 1236.546496511437,
+      "steady_chunk_p95_ms": 1262.4768664041767,
+      "variant": "amp-fixed",
+      "variant_config": {
+        "amp": true,
+        "compile_mode": null,
+        "compile_model": false,
+        "resize_image": 512
+      }
+    },
+    {
+      "action_max_abs_difference_vs_baseline": 2.0071749314665794,
+      "action_mean_abs_difference_vs_baseline": 0.5102634814767433,
+      "control_rate_hz": 0.9984881242814883,
+      "deadline_misses": 20,
+      "first_action_latency_reduction_pct": 22.59131114628139,
+      "first_action_p50_ms": 996.6687935084337,
+      "first_action_p95_ms": 1033.7572759919567,
+      "first_action_throughput_speedup": 1.2918446427761208,
+      "measured_iterations": 20,
+      "ram_peak_mb": 7694,
+      "steady_chunk_p50_ms": 993.6433149996446,
+      "steady_chunk_p95_ms": 1008.0253232415998,
+      "variant": "resize256-fixed",
+      "variant_config": {
+        "amp": false,
+        "compile_mode": null,
+        "compile_model": false,
+        "resize_image": 256
+      }
+    },
+    {
+      "action_max_abs_difference_vs_baseline": 0.07674503326416016,
+      "action_mean_abs_difference_vs_baseline": 0.009006896795971053,
+      "control_rate_hz": 0.9963086574432303,
+      "deadline_misses": 20,
+      "first_action_latency_reduction_pct": 21.901772107608206,
+      "first_action_p50_ms": 1005.546893007704,
+      "first_action_p95_ms": 1025.401679755305,
+      "first_action_throughput_speedup": 1.2804387845750573,
+      "measured_iterations": 20,
+      "ram_peak_mb": 8912,
+      "steady_chunk_p50_ms": 1003.1036099826451,
+      "steady_chunk_p95_ms": 1020.0822266051547,
+      "variant": "compile-reduce-overhead-fixed",
+      "variant_config": {
+        "amp": false,
+        "compile_mode": "reduce-overhead",
+        "compile_model": true,
+        "resize_image": 512
+      }
+    }
+  ],
+  "decisions": [
+    "No measured variant satisfies the 30 Hz deadline; all measured calls missed it.",
+    "AMP is only a modest runtime improvement and is not a sufficient deployment strategy.",
+    "Resize 256 materially changes the representative action and is rejected until task-quality regression exists.",
+    "torch.compile reduce-overhead is a candidate optimization, not a publishable winner, until LIBERO task-success regression exists.",
+    "Prioritize denoise/VLM and visual-prefix cost; postprocessing is not the dominant bottleneck."
+  ],
+  "evidence_hash_verification": {
+    "amp-fixed": {
+      "checked_local": [
+        {
+          "file": "benchmark.json",
+          "sha256": "2cf758c7b56934d97d734afaffd7ee7baa5869b065496f62ff4a0b6bcb2ef4a9"
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "38def967d9838adfcebcf1c93829ae2cd0d5ecc526eb619249f0e6314ee0e9ee"
+        },
+        {
+          "file": "representative_action.npy",
+          "sha256": "6927d24f7183ca9be3d27e0b634c7cb91ae5beac8a7a03b1416fe709a5633c7b"
+        },
+        {
+          "file": "timings.csv",
+          "sha256": "e363b31ebf112afadd5d8c054181a5eb44435b3256251b889461fb5953791fe8"
+        }
+      ],
+      "retained_remote_only": [
+        {
+          "file": "tegrastats.log",
+          "sha256": "633e8d3cdab268436b0aaf918e6018b004c279aa649b86a0d63dda0166bd4fb1"
+        }
+      ]
+    },
+    "baseline-fixed": {
+      "checked_local": [
+        {
+          "file": "benchmark.json",
+          "sha256": "530b2fa760c123437d089035c0cb2ada31fb9cbb912295a39d5afe404394a26c"
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "38def967d9838adfcebcf1c93829ae2cd0d5ecc526eb619249f0e6314ee0e9ee"
+        },
+        {
+          "file": "representative_action.npy",
+          "sha256": "df584850edc3f3ae17977072745f5aaad2bd7e0eaa4e60e872b4496c0a66f61b"
+        },
+        {
+          "file": "timings.csv",
+          "sha256": "89afa235835a0e28d822049ea097f5fd247a8e8a2a4f8b69b8daa12a0fb788fc"
+        }
+      ],
+      "retained_remote_only": [
+        {
+          "file": "tegrastats.log",
+          "sha256": "9e6c58d1ea25344dc0c2195ffe674f961b83a246812e136b2a454024a8133458"
+        }
+      ]
+    },
+    "compile-reduce-overhead-fixed": {
+      "checked_local": [
+        {
+          "file": "benchmark.json",
+          "sha256": "3560dfc8be7365892ad47dff3f1e938dbd8f658265091ebffb8d617197213945"
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "38def967d9838adfcebcf1c93829ae2cd0d5ecc526eb619249f0e6314ee0e9ee"
+        },
+        {
+          "file": "representative_action.npy",
+          "sha256": "e98ba747a7921b5f663ce6aa33b61d7f0b8ab58c3c01e8b347c8b076a644bdd5"
+        },
+        {
+          "file": "tegrastats.log",
+          "sha256": "40e75f50a51b78f28bc1574b5092a7e2bc9cd04199b1faec6ddd8c0e9700d480"
+        },
+        {
+          "file": "timings.csv",
+          "sha256": "2cfa086bc5e63852b7b5ad12d950c351c3fa1110f8b57a2a760063b4c886e777"
+        }
+      ],
+      "retained_remote_only": []
+    },
+    "resize256-fixed": {
+      "checked_local": [
+        {
+          "file": "benchmark.json",
+          "sha256": "2d8c74dd1d4697646eec97d7a5b9e586a3cf10b1afd2aef9c045da8b0bef5cc1"
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "38def967d9838adfcebcf1c93829ae2cd0d5ecc526eb619249f0e6314ee0e9ee"
+        },
+        {
+          "file": "representative_action.npy",
+          "sha256": "73c7a07ceaf4425c891751313edd5481887223eac091582a7b5579eb3fddb618"
+        },
+        {
+          "file": "timings.csv",
+          "sha256": "663f7287096c44e5292c65ca9a01cf6d9164e1eb577a64c03af1a6ac4ec4b3fd"
+        }
+      ],
+      "retained_remote_only": [
+        {
+          "file": "tegrastats.log",
+          "sha256": "679b99233bc241d98ffb4d4575d7f5c45131741658cf2f6a6d478156e457fcdc"
+        }
+      ]
+    },
+    "stage-profile-fixed": {
+      "checked_local": [
+        {
+          "file": "benchmark.json",
+          "sha256": "6e9f8684894fe98dce19f57a986eaebc4379fe6c1c8da06c52c25d5cc0a78296"
+        },
+        {
+          "file": "manifest.json",
+          "sha256": "38def967d9838adfcebcf1c93829ae2cd0d5ecc526eb619249f0e6314ee0e9ee"
+        },
+        {
+          "file": "representative_action.npy",
+          "sha256": "df584850edc3f3ae17977072745f5aaad2bd7e0eaa4e60e872b4496c0a66f61b"
+        },
+        {
+          "file": "stage_profile.json",
+          "sha256": "f7ad0a4e575ddc0e3dff8f12b10c91ca3c5ef2c81a93d41b08a119cdd3d6fbc3"
+        },
+        {
+          "file": "tegrastats.log",
+          "sha256": "eeae737a075d3d8ae30098941569106d25a1d3716cfada2b5437c142e2eeb348"
+        },
+        {
+          "file": "timings.csv",
+          "sha256": "178933b46730caa3e501d434f5dad58fedc1672a33c1a3de4cc2f3028a60c5ee"
+        }
+      ],
+      "retained_remote_only": []
+    }
+  },
+  "frozen_contract": {
+    "base_model_revision": "c83c3163b8ca9b7e67c509fffd9121e66cb96205",
+    "deadline_ms": 33.333333333333336,
+    "input_seed": 20260806,
+    "lerobot_revision": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+    "measured_iterations": 20,
+    "policy_sha256": "435185f15d312b6eaae94680ca6c198fac650f6ebd6013b4d4748dc254027eb8",
+    "vlm_metadata_revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+    "warmup_iterations": 10
+  },
+  "provenance": {
+    "benchmark_script_sha256": "8a6aaa2892f62e364229711131078b3b47e10f1e873f1aef426b125eb75b77dc",
+    "captured_on": "2026-08-06",
+    "claim_boundary": "Compiler warnings were observed in controller stdout; result artifacts contain timings and hashes but not the transient controller stdout from this first run.",
+    "compile_observations": [
+      "TorchInductor reported that the device did not have enough SMs for max_autotune_gemm mode.",
+      "TorchDynamo reached recompile_limit=8 in forward_attn_layer because past_key_values length changed."
+    ],
+    "container_image": "orin-portfolio-runtime:lerobot-8fff0fde-smolvla",
+    "container_image_id": "sha256:49b9afdff61aa318f4bf3eae9037fb352723c0de7855d6845887be2bf9831897",
+    "device": "NVIDIA Jetson AGX Orin Developer Kit",
+    "jetson_linux": "L4T R36.5.0",
+    "power_mode": "MODE_30W",
+    "remote_evidence_root": "<runtime-path-redacted>",
+    "remote_root": "<runtime-path-redacted>",
+    "runtime_policy": "Official NVIDIA Jetson container; network disabled during inference; variants run serially on one GPU.",
+    "transport": "local -> 500k relay FRPS -> Orin FRPC -> SSH"
+  },
+  "schema_version": 1,
+  "scope": "Synthetic-input runtime and bottleneck study only; no task-success, closed-loop, or physical-robot claim.",
+  "stage_profile": {
+    "measurement": "CUDA events; no per-stage synchronization; diagnostic run only",
+    "num_denoise_steps_per_inference": 10,
+    "profiled_inference_calls": 20,
+    "schema_version": 1,
+    "stage_nesting": {
+      "denoise_vlm_forward": "nested within denoise_step_total",
+      "top_level": [
+        "prefix_embedding",
+        "prefix_kv_forward",
+        "denoise_step_total"
+      ]
+    },
+    "stages": {
+      "denoise_step_total": {
+        "invocations": 200,
+        "per_inference_total_mean_ms": 785.7725490570068,
+        "per_inference_total_p50_ms": 785.8754730224609,
+        "per_inference_total_p95_ms": 797.6752105712891,
+        "per_invocation_mean_ms": 78.57725490570068,
+        "per_invocation_p50_ms": 78.35617446899414,
+        "per_invocation_p95_ms": 80.86866264343261,
+        "share_of_full_inference_mean_pct": 63.92124732902811
+      },
+      "denoise_vlm_forward": {
+        "invocations": 200,
+        "per_inference_total_mean_ms": 744.9162708282471,
+        "per_inference_total_p50_ms": 744.3740005493164,
+        "per_inference_total_p95_ms": 755.5055713653564,
+        "per_invocation_mean_ms": 74.4916270828247,
+        "per_invocation_p50_ms": 74.29131317138672,
+        "per_invocation_p95_ms": 76.7953353881836,
+        "share_of_full_inference_mean_pct": 60.59765926434163
+      },
+      "prefix_embedding": {
+        "invocations": 20,
+        "per_inference_total_mean_ms": 332.4460784912109,
+        "per_inference_total_p50_ms": 331.2464904785156,
+        "per_inference_total_p95_ms": 346.3618988037109,
+        "per_invocation_mean_ms": 332.4460784912109,
+        "per_invocation_p50_ms": 331.2464904785156,
+        "per_invocation_p95_ms": 346.3618988037109,
+        "share_of_full_inference_mean_pct": 27.043917520794555
+      },
+      "prefix_kv_forward": {
+        "invocations": 20,
+        "per_inference_total_mean_ms": 96.89875411987305,
+        "per_inference_total_p50_ms": 96.52284622192383,
+        "per_inference_total_p95_ms": 110.2538917541504,
+        "per_invocation_mean_ms": 96.89875411987305,
+        "per_invocation_p50_ms": 96.52284622192383,
+        "per_invocation_p95_ms": 110.2538917541504,
+        "share_of_full_inference_mean_pct": 7.88254722744422
+      }
+    },
+    "unattributed_per_inference_mean_ms": 14.164870933024213,
+    "unattributed_per_inference_p95_ms": 16.615840660582762
+  },
+  "stage_profile_action_identical_to_baseline": true
+}

@@ -1,0 +1,75 @@
+{
+  "artifacts": {
+    "baseline_episodes": "baseline/eager-512-episodes.jsonl",
+    "candidate_episodes": "derived/candidate-resize384-finetuned/episodes.jsonl"
+  },
+  "baseline": {
+    "episodes": 50,
+    "episodes_sha256": "bae5e9b7e92075d102cf9980942730c2daed92d9258a9d6e412263e6a9e31398",
+    "success_rate": 0.2,
+    "successes": 10,
+    "variant": "eager-512-seed43"
+  },
+  "candidate": {
+    "episodes": 50,
+    "episodes_sha256": "4a36047d8cb47e4b26a34e9b0481432e72d4d0bd79ea815b999474263a444c9c",
+    "success_rate": 0.1,
+    "successes": 5,
+    "variant": "resize384-finetuned-6k-r32-seed43"
+  },
+  "paired_analysis": {
+    "baseline_only_successes": 8,
+    "bootstrap_95_ci": [
+      -0.24,
+      0.02
+    ],
+    "both_failures": 37,
+    "both_successes": 2,
+    "candidate_only_successes": 3,
+    "success_rate_delta_candidate_minus_baseline": -0.1
+  },
+  "protocol": {
+    "baseline_resize": [
+      512,
+      512
+    ],
+    "candidate_resize": [
+      384,
+      384
+    ],
+    "candidate_training": {
+      "learning_rate": 0.0005,
+      "lora_rank": 32,
+      "manifest": "screening_30pct.json",
+      "seed": 43,
+      "steps": 6000
+    },
+    "episodes_per_task": 5,
+    "same_episode_ids": true,
+    "same_policy": false,
+    "start_seed": 20260806,
+    "suite": "libero_spatial",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "total_paired_episodes": 50
+  },
+  "quality_gate": {
+    "allowed_absolute_drop": 0.05,
+    "criterion": "fine-tuned 384px success rate >= eager 512px baseline minus 5 percentage points",
+    "minimum_candidate_success_rate": 0.15,
+    "passed": false
+  },
+  "schema_version": 1,
+  "scope": "Paired official LIBERO Spatial recovery gate comparing the frozen seed-43 512px eager policy with a 6000-step rank-32 seed-43 384px LoRA candidate.",
+  "task_id": "SUP-VLA-RESIZE384-FINETUNE-QUALITY"
+}
