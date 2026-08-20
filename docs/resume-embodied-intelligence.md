@@ -1,13 +1,13 @@
-# Embodied intelligence resume entries
+# Resume bullets for embodied intelligence roles
 
-- Reconciled three original audits of a pinned LeRobot LIBERO subset (432 episodes, 52,970 frames, 377/377 identical parquet hashes), then trained SmolVLA LoRA policies across three seeds and reported 13.3% main-condition success with two-stage bootstrap intervals.
-- Ran a paired 50-episode official LIBERO screen for the frozen seed-43 policy: eager 20.0% versus `torch.compile(reduce-overhead)` 22.0%, delta +2.0%; the point-estimate rule passed, but the wide CI does not establish statistical non-inferiority.
-- Tested direct visual downsampling on the same frozen policy: 512x512 eager 20.0% versus 256x256 0.0%, delta -20.0%; rejected the candidate under a paired +/-5 percentage-point gate.
-- Trained a 6000-step 384x384 LoRA recovery candidate and evaluated 50 paired LIBERO episodes; success remained 10.0% versus 20.0% eager, so stopped the planned three-seed/20k expansion at the frozen 15% gate.
-- Benchmarked targeted TorchAO INT8 weight-only/dynamic paths on physical Orin; both met action-difference limits but regressed first-action P50 from 1202 ms to 1416/5450 ms and were rejected.
-- Profiled the physical-Orin SmolVLA path and attributed 60.6% of full inference to denoise VLM forward and 27.0% to prefix embedding, narrowing the next gate to kernel/export-level analysis.
-- Replayed the 50-action scheduler on physical Orin: raising refill threshold from 0.5 to 0.8 increased fresh-action ticks from 68.7% to 86.7% but doubled stale ticks from 100 to 201.
-- Injected a measured Orin latency envelope into paired LIBERO closed-loop runs at two success thresholds; async success regressed by 16%/36%, so both scheduler variants were rejected instead of promoting latency-only gains.
-- Deployed the frozen SmolVLA PyTorch path to Jetson AGX Orin and measured 1190 ms first-action P50, 1192 ms steady P50 and 0.837 Hz; used profiling and deadline replay to reject a misleading 30 Hz claim and define a kernel/export-level gate.
+- Checked three records of a fixed LeRobot LIBERO subset, confirming 432 episodes, 52,970 frames, and identical hashes for all 377 parquet shards; then trained SmolVLA LoRA policies with three seeds and measured 13.3% main-condition success with two-stage bootstrap intervals.
+- Compared eager execution and `torch.compile(reduce-overhead)` on the same 50 official LIBERO episodes: 20.0% versus 22.0%, a +2.0-point difference. The point estimate is within the preset +/-5-point screening range, but the wide confidence interval does not establish non-inferiority.
+- Tested 256x256 visual input on the same policy and episodes. Success fell from 20.0% at 512x512 to 0.0%, so I did not keep direct downsampling as a deployment option.
+- Trained a 6000-step, 384x384 LoRA follow-up and evaluated the same 50 episodes. It reached 10.0% success versus 20.0% for the 512x512 reference, so I stopped before the planned three-seed, 20k-step expansion.
+- Benchmarked targeted TorchAO INT8 weight-only and dynamic quantization on physical Orin. Both stayed within the chosen action-difference limits but increased first-action P50 from 1202 ms to 1416 and 5450 ms.
+- Profiled SmolVLA on physical Orin and found that denoise VLM forward accounts for 60.6% of full inference and prefix embedding for 27.0%, focusing the next optimization work on kernel and export-level analysis.
+- Replayed the 50-action scheduler on physical Orin. Raising the refill threshold from 0.5 to 0.8 increased fresh-action ticks from 68.7% to 86.7%, but stale ticks doubled from 100 to 201.
+- Injected the measured Orin latency range into paired LIBERO closed-loop runs. Asynchronous success fell by 16 and 36 percentage points at the two tested thresholds, showing that scheduler tuning alone did not preserve task quality.
+- Ran the selected SmolVLA PyTorch policy on Jetson AGX Orin and measured 1190 ms first-action P50, 1192 ms steady P50, and 0.837 Hz. Stage profiling and deadline replay showed that this path cannot support direct 30 Hz control.
 
-Interview boundary: Orin used synthetic observations; the latency-envelope task results are LIBERO simulation, not physical-robot success.
+Orin measurements used synthetic observations. The latency-injected task results come from LIBERO simulation, not physical-robot success tests.
