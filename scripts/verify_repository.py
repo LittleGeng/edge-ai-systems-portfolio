@@ -13,6 +13,8 @@ from pathlib import Path
 
 REQUIRED = {
     "README.md",
+    "technical-report.md",
+    "technical-report-zh.md",
     "PUBLICATION.json",
     "SHA256SUMS",
     "projects/edge-diffusion.md",
@@ -21,8 +23,9 @@ REQUIRED = {
     "docs/failure-analysis.md",
     "results/results.csv",
     "figures/latency-comparison.svg",
-    "demos/edge-diffusion-evidence-walkthrough.mp4",
-    "demos/smolvla-edge-evidence-walkthrough.mp4",
+    "demos/edge-diffusion-evidence-overview.png",
+    "demos/smolvla-edge-evidence-overview.png",
+    "demos/image-manifest.json",
     "reproduction/package/reproduce.py",
 }
 FORBIDDEN_PATHS = {
