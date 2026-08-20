@@ -46,6 +46,51 @@
       "value": 2.403365141294791
     },
     {
+      "claim_id": "EDGE-STEPS-100-P50",
+      "evidence": "evidence/edge-step-quality.json",
+      "metric": "100-step Push-T controller P50",
+      "project": "edge-diffusion",
+      "scope": "20 paired Push-T episodes; quality gate passed",
+      "unit": "ms",
+      "value": 1076.4756677672267
+    },
+    {
+      "claim_id": "EDGE-STEPS-20-P50",
+      "evidence": "evidence/edge-step-quality.json",
+      "metric": "20-step Push-T controller P50",
+      "project": "edge-diffusion",
+      "scope": "20 paired Push-T episodes; quality gate rejected",
+      "unit": "ms",
+      "value": 217.60246809571981
+    },
+    {
+      "claim_id": "EDGE-STEPS-10-P50",
+      "evidence": "evidence/edge-step-quality.json",
+      "metric": "10-step Push-T controller P50",
+      "project": "edge-diffusion",
+      "scope": "20 paired Push-T episodes; quality gate rejected",
+      "unit": "ms",
+      "value": 88.39210029691458
+    },
+    {
+      "claim_id": "EDGE-STEPS-8-P50",
+      "evidence": "evidence/edge-step-quality.json",
+      "metric": "8-step Push-T controller P50",
+      "project": "edge-diffusion",
+      "scope": "20 paired Push-T episodes; quality gate rejected",
+      "unit": "ms",
+      "value": 80.4067887365818
+    },
+    {
+      "claim_id": "EDGE-STEPS-6-P50",
+      "evidence": "evidence/edge-step-quality.json",
+      "metric": "6-step Push-T controller P50",
+      "project": "edge-diffusion",
+      "scope": "20 paired Push-T episodes; quality gate rejected",
+      "unit": "ms",
+      "value": 65.24052750319242
+    },
+    {
       "claim_id": "EDGE-ORIN-P50",
       "evidence": "evidence/edge-orin.json",
       "metric": "Orin FP16 U-Net wall P50",
@@ -70,6 +115,33 @@
       "project": "edge-diffusion",
       "scope": "measured board inference",
       "unit": "count/500",
+      "value": 0
+    },
+    {
+      "claim_id": "EDGE-ORIN-LOOP-100-P50",
+      "evidence": "evidence/edge-orin-denoising-steps.json",
+      "metric": "Orin 100-step scheduler-plus-U-Net P50",
+      "project": "edge-diffusion",
+      "scope": "physical Orin, synthetic tensors, complete denoising loop; 50 ms timing gate missed",
+      "unit": "ms",
+      "value": 557.8093604999594
+    },
+    {
+      "claim_id": "EDGE-ORIN-LOOP-6-P50",
+      "evidence": "evidence/edge-orin-denoising-steps.json",
+      "metric": "Orin 6-step scheduler-plus-U-Net P50",
+      "project": "edge-diffusion",
+      "scope": "physical Orin timing gate passed; paired Push-T quality gate rejected",
+      "unit": "ms",
+      "value": 32.427373982500285
+    },
+    {
+      "claim_id": "EDGE-ORIN-LOOP-6-MISS",
+      "evidence": "evidence/edge-orin-denoising-steps.json",
+      "metric": "Orin 6-step 50 ms deadline misses",
+      "project": "edge-diffusion",
+      "scope": "physical Orin timing only; paired Push-T quality gate rejected",
+      "unit": "count/20",
       "value": 0
     },
     {
@@ -116,6 +188,204 @@
       "scope": "every measured inference missed",
       "unit": "count/500",
       "value": 500
+    },
+    {
+      "claim_id": "VLA-ORIN-STRENGTHENING",
+      "evidence": "evidence/orin-smolvla-strengthening.json",
+      "metric": "Orin compile first-action P50",
+      "project": "smolvla-edge",
+      "scope": "fixed synthetic input; paired LIBERO task-quality gate reported separately",
+      "unit": "ms",
+      "value": 1005.546893007704
+    },
+    {
+      "claim_id": "VLA-DATA-SHARD-AUDIT",
+      "evidence": "evidence/smolvla-dataset-audit.json",
+      "metric": "Original LIBERO parquet shard hashes verified",
+      "project": "smolvla-edge",
+      "scope": "D/E/F original audits agree; 432 episodes and 52,970 frames; archive synchronization did not rerun experiments",
+      "unit": "count",
+      "value": 377
+    },
+    {
+      "claim_id": "VLA-STAGE-DENOISE-VLM",
+      "evidence": "evidence/orin-smolvla-strengthening.json",
+      "metric": "Denoise VLM share of full Orin inference",
+      "project": "smolvla-edge",
+      "scope": "diagnostic CUDA-event stage profile; nested inside denoise-step total",
+      "unit": "percent",
+      "value": 60.59765926434163
+    },
+    {
+      "claim_id": "VLA-STAGE-PREFIX-EMBED",
+      "evidence": "evidence/orin-smolvla-strengthening.json",
+      "metric": "Prefix embedding share of full Orin inference",
+      "project": "smolvla-edge",
+      "scope": "diagnostic CUDA-event stage profile",
+      "unit": "percent",
+      "value": 27.043917520794555
+    },
+    {
+      "claim_id": "VLA-CHUNK-05-FRESH",
+      "evidence": "evidence/orin-smolvla-chunk-scheduler-05.json",
+      "metric": "Physical Orin fresh-action tick rate at threshold 0.5",
+      "project": "smolvla-edge",
+      "scope": "300-tick synthetic-input board replay; not task success",
+      "unit": "ratio",
+      "value": 0.6866666666666666
+    },
+    {
+      "claim_id": "VLA-CHUNK-08-FRESH",
+      "evidence": "evidence/orin-smolvla-chunk-scheduler-08.json",
+      "metric": "Physical Orin fresh-action tick rate at threshold 0.8",
+      "project": "smolvla-edge",
+      "scope": "300-tick synthetic-input board replay; not task success",
+      "unit": "ratio",
+      "value": 0.8666666666666667
+    },
+    {
+      "claim_id": "VLA-CHUNK-08-STALE",
+      "evidence": "evidence/orin-smolvla-chunk-scheduler-08.json",
+      "metric": "Physical Orin stale ticks at threshold 0.8",
+      "project": "smolvla-edge",
+      "scope": "higher refill threshold trades fallback for action age",
+      "unit": "count/300",
+      "value": 201
+    },
+    {
+      "claim_id": "VLA-LIBERO-EAGER-SUCCESS",
+      "evidence": "evidence/smolvla-quality-gate.json",
+      "metric": "Paired LIBERO eager success",
+      "project": "smolvla-edge",
+      "scope": "50 official LIBERO Spatial episodes, frozen seed-43 policy",
+      "unit": "ratio",
+      "value": 0.2
+    },
+    {
+      "claim_id": "VLA-LIBERO-COMPILE-SUCCESS",
+      "evidence": "evidence/smolvla-quality-gate.json",
+      "metric": "Paired LIBERO torch.compile success",
+      "project": "smolvla-edge",
+      "scope": "50 official LIBERO Spatial episodes, reduce-overhead",
+      "unit": "ratio",
+      "value": 0.22
+    },
+    {
+      "claim_id": "VLA-LIBERO-COMPILE-DELTA",
+      "evidence": "evidence/smolvla-quality-gate.json",
+      "metric": "Paired compile-minus-eager success delta",
+      "project": "smolvla-edge",
+      "scope": "paired episode delta; acceptance threshold +/-5 percentage points",
+      "unit": "ratio",
+      "value": 0.02
+    },
+    {
+      "claim_id": "VLA-LIBERO-RESIZE-SUCCESS",
+      "evidence": "evidence/smolvla-resize-quality-gate.json",
+      "metric": "Paired LIBERO resize256 success",
+      "project": "smolvla-edge",
+      "scope": "50 official LIBERO Spatial episodes; frozen seed-43 policy; quality gate rejected",
+      "unit": "ratio",
+      "value": 0.0
+    },
+    {
+      "claim_id": "VLA-LIBERO-RESIZE-DELTA",
+      "evidence": "evidence/smolvla-resize-quality-gate.json",
+      "metric": "Paired resize256-minus-eager success delta",
+      "project": "smolvla-edge",
+      "scope": "paired episode delta; absolute +/-5 percentage-point gate rejected",
+      "unit": "ratio",
+      "value": -0.2
+    },
+    {
+      "claim_id": "VLA-LIBERO-RESIZE384-FT-SUCCESS",
+      "evidence": "evidence/smolvla-resize384-finetune-quality-gate.json",
+      "metric": "Paired LIBERO resize384 fine-tuned success",
+      "project": "smolvla-edge",
+      "scope": "6000-step rank-32 LoRA recovery candidate; 50 paired official LIBERO Spatial episodes; quality gate rejected",
+      "unit": "ratio",
+      "value": 0.1
+    },
+    {
+      "claim_id": "VLA-LIBERO-RESIZE384-FT-DELTA",
+      "evidence": "evidence/smolvla-resize384-finetune-quality-gate.json",
+      "metric": "Paired resize384 fine-tuned minus eager success delta",
+      "project": "smolvla-edge",
+      "scope": "paired episode delta; candidate required at least 15% success and was rejected at 10%",
+      "unit": "ratio",
+      "value": -0.1
+    },
+    {
+      "claim_id": "VLA-ORIN-INT8-WO-P50",
+      "evidence": "evidence/orin-smolvla-quantization.json",
+      "metric": "Orin targeted INT8 weight-only first-action P50",
+      "project": "smolvla-edge",
+      "scope": "physical Orin, synthetic input, TorchAO targeted action-expert linear layers; latency gate rejected",
+      "unit": "ms",
+      "value": 1415.665179520147
+    },
+    {
+      "claim_id": "VLA-ORIN-INT8-DYNAMIC-P50",
+      "evidence": "evidence/orin-smolvla-quantization.json",
+      "metric": "Orin targeted INT8 dynamic first-action P50",
+      "project": "smolvla-edge",
+      "scope": "physical Orin, synthetic input, TorchAO targeted action-expert linear layers; latency gate rejected",
+      "unit": "ms",
+      "value": 5450.431158998981
+    },
+    {
+      "claim_id": "VLA-ORIN-INT8-WO-ACTION-MAX",
+      "evidence": "evidence/orin-smolvla-quantization.json",
+      "metric": "Orin targeted INT8 weight-only action max absolute difference",
+      "project": "smolvla-edge",
+      "scope": "correctness gate passed; promotion rejected because P50 was slower than baseline",
+      "unit": "abs",
+      "value": 0.02459891140460968
+    },
+    {
+      "claim_id": "VLA-ORIN-INT8-DYNAMIC-ACTION-MAX",
+      "evidence": "evidence/orin-smolvla-quantization.json",
+      "metric": "Orin targeted INT8 dynamic action max absolute difference",
+      "project": "smolvla-edge",
+      "scope": "correctness gate passed; promotion rejected because P50 was slower than baseline",
+      "unit": "abs",
+      "value": 0.025344014167785645
+    },
+    {
+      "claim_id": "VLA-TRACE-05-DELTA",
+      "evidence": "evidence/smolvla-orin-latency-envelope.json",
+      "metric": "Async-minus-sync success at threshold 0.5",
+      "project": "smolvla-edge",
+      "scope": "paired LIBERO simulation with Orin latency envelope; not physical robot",
+      "unit": "ratio",
+      "value": -0.15999999999999998
+    },
+    {
+      "claim_id": "VLA-TRACE-08-DELTA",
+      "evidence": "evidence/smolvla-orin-latency-envelope.json",
+      "metric": "Async-minus-sync success at threshold 0.8",
+      "project": "smolvla-edge",
+      "scope": "paired LIBERO simulation with Orin latency envelope; not physical robot",
+      "unit": "ratio",
+      "value": -0.36000000000000004
+    },
+    {
+      "claim_id": "VLA-TRACE-05-FALLBACK",
+      "evidence": "evidence/smolvla-orin-latency-envelope.json",
+      "metric": "Async fallback ticks at threshold 0.5",
+      "project": "smolvla-edge",
+      "scope": "25 paired LIBERO episodes; latency envelope injection",
+      "unit": "count",
+      "value": 3618
+    },
+    {
+      "claim_id": "VLA-TRACE-08-FALLBACK",
+      "evidence": "evidence/smolvla-orin-latency-envelope.json",
+      "metric": "Async fallback ticks at threshold 0.8",
+      "project": "smolvla-edge",
+      "scope": "25 paired LIBERO episodes; latency envelope injection",
+      "unit": "count",
+      "value": 4028
     },
     {
       "claim_id": "VLA-REPLAY-FRESH",

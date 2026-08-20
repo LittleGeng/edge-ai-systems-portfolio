@@ -4,12 +4,42 @@ EDGE-SUCCESS-RERUN,edge-diffusion,Same-seed Push-T rerun high-quality completion
 EDGE-4090-EAGER,edge-diffusion,100-step eager denoising P50,566.708740234375,ms,evidence/edge-fixed-node.json,fixed RTX 4090 node
 EDGE-4090-TRT,edge-diffusion,100-step TensorRT denoising P50,235.7980194091797,ms,evidence/edge-fixed-node.json,fixed RTX 4090 node
 EDGE-4090-SPEEDUP,edge-diffusion,TensorRT denoising speedup,2.403365141294791,x,evidence/edge-fixed-node.json,P50 ratio on same node
+EDGE-STEPS-100-P50,edge-diffusion,100-step Push-T controller P50,1076.4756677672267,ms,evidence/edge-step-quality.json,20 paired Push-T episodes; quality gate passed
+EDGE-STEPS-20-P50,edge-diffusion,20-step Push-T controller P50,217.60246809571981,ms,evidence/edge-step-quality.json,20 paired Push-T episodes; quality gate rejected
+EDGE-STEPS-10-P50,edge-diffusion,10-step Push-T controller P50,88.39210029691458,ms,evidence/edge-step-quality.json,20 paired Push-T episodes; quality gate rejected
+EDGE-STEPS-8-P50,edge-diffusion,8-step Push-T controller P50,80.4067887365818,ms,evidence/edge-step-quality.json,20 paired Push-T episodes; quality gate rejected
+EDGE-STEPS-6-P50,edge-diffusion,6-step Push-T controller P50,65.24052750319242,ms,evidence/edge-step-quality.json,20 paired Push-T episodes; quality gate rejected
 EDGE-ORIN-P50,edge-diffusion,Orin FP16 U-Net wall P50,3.3709359995555133,ms,evidence/edge-orin.json,U-Net inference only; no simulator/robot I/O
 EDGE-ORIN-P95,edge-diffusion,Orin FP16 U-Net wall P95,4.4148895583930425,ms,evidence/edge-orin.json,U-Net inference only; no simulator/robot I/O
 EDGE-ORIN-MISS,edge-diffusion,Orin 50 ms deadline misses,0,count/500,evidence/edge-orin.json,measured board inference
+EDGE-ORIN-LOOP-100-P50,edge-diffusion,Orin 100-step scheduler-plus-U-Net P50,557.8093604999594,ms,evidence/edge-orin-denoising-steps.json,"physical Orin, synthetic tensors, complete denoising loop; 50 ms timing gate missed"
+EDGE-ORIN-LOOP-6-P50,edge-diffusion,Orin 6-step scheduler-plus-U-Net P50,32.427373982500285,ms,evidence/edge-orin-denoising-steps.json,physical Orin timing gate passed; paired Push-T quality gate rejected
+EDGE-ORIN-LOOP-6-MISS,edge-diffusion,Orin 6-step 50 ms deadline misses,0,count/20,evidence/edge-orin-denoising-steps.json,physical Orin timing only; paired Push-T quality gate rejected
 VLA-MAIN,smolvla-edge,Main-condition success,0.13333333333333333,ratio,evidence/smolvla-quality.json,"3 seeds, 45 runs; no zero-shot claim"
 VLA-GEN,smolvla-edge,Secondary-condition success,0.18095238095238095,ratio,evidence/smolvla-quality.json,tasks excluded from selection but included in final fine-tuning
 VLA-ORIN-P50,smolvla-edge,Orin steady chunk P50,1191.741118003847,ms,evidence/smolvla-orin.json,"synthetic input, PyTorch path"
 VLA-ORIN-RATE,smolvla-edge,Orin control rate,0.836850504570623,Hz,evidence/smolvla-orin.json,"synthetic input, PyTorch path"
 VLA-ORIN-MISS,smolvla-edge,Orin 30 Hz deadline misses,500,count/500,evidence/smolvla-orin.json,every measured inference missed
+VLA-ORIN-STRENGTHENING,smolvla-edge,Orin compile first-action P50,1005.546893007704,ms,evidence/orin-smolvla-strengthening.json,fixed synthetic input; paired LIBERO task-quality gate reported separately
+VLA-DATA-SHARD-AUDIT,smolvla-edge,Original LIBERO parquet shard hashes verified,377,count,evidence/smolvla-dataset-audit.json,"D/E/F original audits agree; 432 episodes and 52,970 frames; archive synchronization did not rerun experiments"
+VLA-STAGE-DENOISE-VLM,smolvla-edge,Denoise VLM share of full Orin inference,60.59765926434163,percent,evidence/orin-smolvla-strengthening.json,diagnostic CUDA-event stage profile; nested inside denoise-step total
+VLA-STAGE-PREFIX-EMBED,smolvla-edge,Prefix embedding share of full Orin inference,27.043917520794555,percent,evidence/orin-smolvla-strengthening.json,diagnostic CUDA-event stage profile
+VLA-CHUNK-05-FRESH,smolvla-edge,Physical Orin fresh-action tick rate at threshold 0.5,0.6866666666666666,ratio,evidence/orin-smolvla-chunk-scheduler-05.json,300-tick synthetic-input board replay; not task success
+VLA-CHUNK-08-FRESH,smolvla-edge,Physical Orin fresh-action tick rate at threshold 0.8,0.8666666666666667,ratio,evidence/orin-smolvla-chunk-scheduler-08.json,300-tick synthetic-input board replay; not task success
+VLA-CHUNK-08-STALE,smolvla-edge,Physical Orin stale ticks at threshold 0.8,201,count/300,evidence/orin-smolvla-chunk-scheduler-08.json,higher refill threshold trades fallback for action age
+VLA-LIBERO-EAGER-SUCCESS,smolvla-edge,Paired LIBERO eager success,0.2,ratio,evidence/smolvla-quality-gate.json,"50 official LIBERO Spatial episodes, frozen seed-43 policy"
+VLA-LIBERO-COMPILE-SUCCESS,smolvla-edge,Paired LIBERO torch.compile success,0.22,ratio,evidence/smolvla-quality-gate.json,"50 official LIBERO Spatial episodes, reduce-overhead"
+VLA-LIBERO-COMPILE-DELTA,smolvla-edge,Paired compile-minus-eager success delta,0.02,ratio,evidence/smolvla-quality-gate.json,paired episode delta; acceptance threshold +/-5 percentage points
+VLA-LIBERO-RESIZE-SUCCESS,smolvla-edge,Paired LIBERO resize256 success,0.0,ratio,evidence/smolvla-resize-quality-gate.json,50 official LIBERO Spatial episodes; frozen seed-43 policy; quality gate rejected
+VLA-LIBERO-RESIZE-DELTA,smolvla-edge,Paired resize256-minus-eager success delta,-0.2,ratio,evidence/smolvla-resize-quality-gate.json,paired episode delta; absolute +/-5 percentage-point gate rejected
+VLA-LIBERO-RESIZE384-FT-SUCCESS,smolvla-edge,Paired LIBERO resize384 fine-tuned success,0.1,ratio,evidence/smolvla-resize384-finetune-quality-gate.json,6000-step rank-32 LoRA recovery candidate; 50 paired official LIBERO Spatial episodes; quality gate rejected
+VLA-LIBERO-RESIZE384-FT-DELTA,smolvla-edge,Paired resize384 fine-tuned minus eager success delta,-0.1,ratio,evidence/smolvla-resize384-finetune-quality-gate.json,paired episode delta; candidate required at least 15% success and was rejected at 10%
+VLA-ORIN-INT8-WO-P50,smolvla-edge,Orin targeted INT8 weight-only first-action P50,1415.665179520147,ms,evidence/orin-smolvla-quantization.json,"physical Orin, synthetic input, TorchAO targeted action-expert linear layers; latency gate rejected"
+VLA-ORIN-INT8-DYNAMIC-P50,smolvla-edge,Orin targeted INT8 dynamic first-action P50,5450.431158998981,ms,evidence/orin-smolvla-quantization.json,"physical Orin, synthetic input, TorchAO targeted action-expert linear layers; latency gate rejected"
+VLA-ORIN-INT8-WO-ACTION-MAX,smolvla-edge,Orin targeted INT8 weight-only action max absolute difference,0.02459891140460968,abs,evidence/orin-smolvla-quantization.json,correctness gate passed; promotion rejected because P50 was slower than baseline
+VLA-ORIN-INT8-DYNAMIC-ACTION-MAX,smolvla-edge,Orin targeted INT8 dynamic action max absolute difference,0.025344014167785645,abs,evidence/orin-smolvla-quantization.json,correctness gate passed; promotion rejected because P50 was slower than baseline
+VLA-TRACE-05-DELTA,smolvla-edge,Async-minus-sync success at threshold 0.5,-0.15999999999999998,ratio,evidence/smolvla-orin-latency-envelope.json,paired LIBERO simulation with Orin latency envelope; not physical robot
+VLA-TRACE-08-DELTA,smolvla-edge,Async-minus-sync success at threshold 0.8,-0.36000000000000004,ratio,evidence/smolvla-orin-latency-envelope.json,paired LIBERO simulation with Orin latency envelope; not physical robot
+VLA-TRACE-05-FALLBACK,smolvla-edge,Async fallback ticks at threshold 0.5,3618,count,evidence/smolvla-orin-latency-envelope.json,25 paired LIBERO episodes; latency envelope injection
+VLA-TRACE-08-FALLBACK,smolvla-edge,Async fallback ticks at threshold 0.8,4028,count,evidence/smolvla-orin-latency-envelope.json,25 paired LIBERO episodes; latency envelope injection
 VLA-REPLAY-FRESH,smolvla-edge,30 Hz replay fresh-action ticks,0.02666666666666667,ratio,evidence/control-replay.json,"offline timing replay, not task execution"
