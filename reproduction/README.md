@@ -1,6 +1,6 @@
-# Minimum offline reproduction
+# Check the published results offline
 
-The package replays frozen result aggregation and acceptance gates. It performs no model inference and requires no credentials or network access.
+This package recalculates the summary values from the included result files and checks the expected conditions. It does not rerun model inference and needs neither credentials nor network access.
 
 ```bash
 cd package
